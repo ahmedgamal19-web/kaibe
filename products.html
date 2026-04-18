@@ -171,7 +171,7 @@
       grid.innerHTML = filtered.map(p => `
         <div class="product-card" data-category="${p.category}">
           <div class="product-img">
-            <img src="${p.img}" alt="${p.name}" onerror="this.src='images/logo.png'">
+            <img src="${p.img}" alt="${p.name}" onerror="this.src='logo.png'">
             ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
           </div>
           <div class="product-info">
