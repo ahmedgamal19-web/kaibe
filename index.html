@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>kaibe • Natural Beauty & Hair Care</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- ===== شريط الإعلان الدوار ===== -->
+  <div class="announcement-bar">
+    <div class="announcement-slider">
+      <div class="announcement-slide">✨ Free shipping on orders over 750 L.E</div>
+      <div class="announcement-slide">🌿 Cruelty‑free & vegan formulas</div>
+      <div class="announcement-slide">🎁 Free sample with every order</div>
+    </div>
+  </div>
+
   <!-- ===== HEADER ===== -->
   <header class="header">
     <div class="container header-container">
@@ -30,8 +40,8 @@
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
         <div class="nav-icons">
-          <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
-          <a href="#" aria-label="Cart"><i class="fas fa-shopping-bag"></i></a>
+          <a href="#" class="search-toggle" aria-label="Search"><i class="fas fa-search"></i></a>
+          <a href="#" class="cart-toggle" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
         </div>
         <div class="hamburger" aria-label="Menu">
           <span class="bar"></span>
@@ -39,6 +49,13 @@
           <span class="bar"></span>
         </div>
       </nav>
+    </div>
+    <!-- شريط البحث المخفي -->
+    <div class="search-overlay">
+      <div class="container">
+        <input type="text" id="searchInput" placeholder="Search for products..." class="search-input">
+        <button class="search-close"><i class="fas fa-times"></i></button>
+      </div>
     </div>
   </header>
 
@@ -57,8 +74,20 @@
         </div>
         <div class="hero-image">
           <div class="hero-img-placeholder">
-             <img src="hero.jpeg" alt="Kaibe Natural Beauty Product">
+            <img src="hero.jpeg" alt="Kaibe Natural Beauty Product">
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== قسم مميزات الثقة ===== -->
+    <section class="trust-badges">
+      <div class="container">
+        <div class="badges-grid">
+          <div class="badge-item"><i class="fas fa-truck"></i> Free Shipping</div>
+          <div class="badge-item"><i class="fas fa-undo-alt"></i> Easy Returns</div>
+          <div class="badge-item"><i class="fas fa-leaf"></i> 100% Natural</div>
+          <div class="badge-item"><i class="fas fa-lock"></i> Secure Checkout</div>
         </div>
       </div>
     </section>
@@ -70,69 +99,23 @@
           <h2 class="section-title">Our Bestsellers</h2>
           <p class="section-subtitle">Formulated for every skin & hair type</p>
         </div>
-        <div class="product-grid">
-          <!-- Product 1 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="Shampoo.png" alt="Hydrating Serum">
-              <span class="product-badge">New</span>
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Hydrating Serum</h3>
-              <p class="product-desc">With hyaluronic acid & rose</p>
-              <div class="product-footer">
-                <span class="product-price">250 L.E</span>
-                <button class="btn-add"><i class="fas fa-plus"></i></button>
-              </div>
-            </div>
+        <!-- شريط الفلترة والسورت -->
+        <div class="filter-bar">
+          <div class="filter-categories">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="skincare">Skincare</button>
+            <button class="filter-btn" data-filter="haircare">Hair Care</button>
+            <button class="filter-btn" data-filter="body">Body</button>
           </div>
-          <!-- Product 2 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="Hair Mask.png" alt="Hair Mask">
-              
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Hair Mask</h3>
-              <p class="product-desc">With hyaluronic acid & rose</p>
-              <div class="product-footer">
-                <span class="product-price">150 L.E</span>
-                <button class="btn-add"><i class="fas fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-          <!-- Product 3 -->
-         <div class="product-card">
-            <div class="product-img">
-              <img src="Bunddle.png" alt="Bunddle">
-              <span class="product-badge">Sale</span>
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Bunddle</h3>
-              <p class="product-desc">With hyaluronic acid & rose</p>
-              <div class="product-footer">
-                <div class="price-wrapper">
-                  <span class="product-price">750 L.E</span>
-                  <span class="old-price">1000 L.E</span>
-                </div>
-                <button class="btn-add"><i class="fas fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
-          <!-- Product 4 -->
-          <div class="product-card">
-            <div class="product-img">
-              <i class="fas fa-wind"></i>
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Calming Mist</h3>
-              <p class="product-desc">Rosewater & aloe</p>
-              <div class="product-footer">
-                <span class="product-price">$24.00</span>
-                <button class="btn-add"><i class="fas fa-plus"></i></button>
-              </div>
-            </div>
-          </div>
+          <select class="sort-select">
+            <option value="featured">Sort by: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+        <!-- شبكة المنتجات (تولّد ديناميكياً عبر JavaScript) -->
+        <div class="product-grid" id="productGrid">
+          <!-- المنتجات سيتم توليدها من data-products في main.js، لكن نتركها فارغة أو نضيف static fallback -->
         </div>
         <div class="view-all">
           <a href="products.html" class="btn btn-secondary">View All Products <i class="fas fa-arrow-right"></i></a>
@@ -140,7 +123,7 @@
       </div>
     </section>
 
-<!-- Community / Models Section -->
+    <!-- Community / Models Section -->
     <section class="community">
       <div class="container">
         <div class="section-header">
@@ -173,15 +156,14 @@
       </div>
     </section>
 
-
     <!-- Policies Preview -->
-    <section class="policies-preview">
+    <section class="policies">
       <div class="container">
         <div class="policy-grid">
           <div class="policy-card">
             <div class="policy-icon"><i class="fas fa-truck"></i></div>
             <h4>Free Shipping</h4>
-            <p>On orders over $50</p>
+            <p>On orders over 750 L.E</p>
           </div>
           <div class="policy-card">
             <div class="policy-icon"><i class="fas fa-undo-alt"></i></div>
@@ -245,10 +227,32 @@
     <div class="footer-bottom">
       <div class="container">
         <p>&copy; 2025 kaibe. All rights reserved.</p>
+        <p class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+        </p>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+  <!-- ===== أيقونة واتساب عائمة ===== -->
+  <a href="https://wa.me/201234567890" class="whatsapp-float" target="_blank" aria-label="Order via WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ===== سلة جانبية ===== -->
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items">
+      <p class="empty-cart">Your cart is empty</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <span>0 L.E</span></div>
+      <button class="btn btn-primary btn-block">Checkout via WhatsApp</button>
+    </div>
+  </div>
+  <div class="cart-overlay"></div>
