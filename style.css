@@ -431,30 +431,30 @@ ul {
 
 .product-badge {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 12px;
+  left: 12px;
   background: var(--dusty-rose);
   color: white;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 30px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 500;
   z-index: 2;
 }
 
 .product-info {
-  padding: 24px 20px;
+  padding: 20px 16px;
 }
 
 .product-name {
-  font-size: 1.3rem;
-  margin-bottom: 6px;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
   font-weight: 600;
 }
 .product-desc {
   color: var(--light-text);
-  font-size: 0.9rem;
-  margin-bottom: 18px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
 }
 .product-footer {
   display: flex;
@@ -465,17 +465,18 @@ ul {
 .price-wrapper {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .current-price {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--dusty-rose);
 }
 
 .old-price {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--light-text);
   text-decoration: line-through;
   opacity: 0.7;
@@ -484,14 +485,14 @@ ul {
 .btn-add {
   background: var(--soft-cream);
   border: none;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--olive-sage);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.2s;
   border: 1px solid var(--warm-nude);
@@ -941,7 +942,7 @@ ul {
     padding: 0 24px;
   }
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .policy-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1006,15 +1007,33 @@ ul {
   .hero-img-placeholder {
     max-width: 320px;
   }
+  /* التعديل الأهم: عمودين للمنتجات على الهاتف */
   .product-grid {
-    grid-template-columns: 1fr;
-    max-width: 420px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 100%;
+    margin: 0;
+  }
+  .product-info {
+    padding: 16px 12px;
+  }
+  .product-name {
+    font-size: 1.1rem;
+  }
+  .current-price {
+    font-size: 1.1rem;
+  }
+  .old-price {
+    font-size: 0.8rem;
+  }
+  .btn-add {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
   }
   .policy-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
   }
   .footer-container {
     grid-template-columns: 1fr;
@@ -1065,51 +1084,72 @@ ul {
     aspect-ratio: 4 / 5;
   }
   .container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
   .hero-title {
     font-size: 2.5rem;
   }
   .logo-text {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   .logo-dot {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .logo img {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
   }
   .hero-img-placeholder {
-    max-width: 280px;
+    max-width: 260px;
   }
   .page-title {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
   .policy-section h2 {
     font-size: 1.5rem;
   }
   .btn {
-    padding: 12px 24px;
-    font-size: 0.95rem;
+    padding: 12px 20px;
+    font-size: 0.9rem;
   }
   .community-cta .btn {
     width: 100%;
     justify-content: center;
   }
+  .product-grid {
+    gap: 12px;
+  }
+  .product-badge {
+    top: 8px;
+    left: 8px;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+  .section-header {
+    margin-bottom: 32px;
+  }
 }
 
 @media (max-width: 480px) {
   .header-container {
-    padding: 12px 20px;
+    padding: 12px 16px;
   }
   .section-title {
-    font-size: 2rem;
-  }
-  .product-info {
-    padding: 18px 15px;
+    font-size: 1.8rem;
   }
   .product-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+  .product-desc {
+    font-size: 0.75rem;
+  }
+  .price-wrapper {
+    gap: 5px;
+  }
+  .current-price {
+    font-size: 1rem;
+  }
+  .old-price {
+    font-size: 0.75rem;
   }
 }
