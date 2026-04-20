@@ -13,7 +13,8 @@ const products = [
     oldPrice: null,
     category: "skincare",
     badge: "New",
-    img: "Shampoo.png"
+    img: "Shampoo.png",
+    bestseller: true
   },
   {
     id: 2,
@@ -23,7 +24,8 @@ const products = [
     oldPrice: null,
     category: "haircare",
     badge: "",
-    img: "Hair Mask.png"
+    img: "Hair Mask.png",
+    bestseller: true
   },
   {
     id: 3,
@@ -33,7 +35,8 @@ const products = [
     oldPrice: 1000,
     category: "sets",
     badge: "Sale",
-    img: "Bunddle.png"
+    img: "Bunddle.png",
+    bestseller: true
   },
   {
     id: 4,
@@ -43,7 +46,8 @@ const products = [
     oldPrice: null,
     category: "skincare",
     badge: "",
-    img: ""
+    img: "",
+    bestseller: true
   },
   {
     id: 5,
@@ -53,7 +57,8 @@ const products = [
     oldPrice: null,
     category: "skincare",
     badge: "",
-    img: ""
+    img: "",
+    bestseller: false
   },
   {
     id: 6,
@@ -63,7 +68,8 @@ const products = [
     oldPrice: 400,
     category: "skincare",
     badge: "",
-    img: ""
+    img: "",
+    bestseller: false
   },
   {
     id: 7,
@@ -73,7 +79,8 @@ const products = [
     oldPrice: null,
     category: "body",
     badge: "",
-    img: ""
+    img: "",
+    bestseller: false
   },
   {
     id: 8,
@@ -84,6 +91,7 @@ const products = [
     category: "sets",
     badge: "Sale",
     img: "Bunddle.png"
+    bestseller: false,
   }
 ];
 
@@ -141,9 +149,17 @@ function renderProducts(filter = currentFilter, sort = currentSort) {
   const grid = document.getElementById('productGrid');
   if (!grid) return;
 
-  let filtered = filter === 'all'
-    ? [...products]
-    : products.filter(p => p.category === filter);
+  // هل نحن في الصفحة الرئيسية؟ (نتحقق من وجود عنصر خاص بالهوم مثل .hero)
+const isHomePage = document.querySelector('.hero') !== null;
+
+let filtered;
+if (isHomePage) {
+  // في الصفحة الرئيسية: نعرض فقط المنتجات التي bestseller = true
+  filtered = products.filter(p => p.bestseller === true);
+} else {
+  // في صفحة المنتجات: نعرض حسب الفلتر العادي
+  filtered = filter === 'all' ? [...products] : products.filter(p => p.category === filter);
+}
 
   if (sort === 'price-asc') {
     filtered.sort((a, b) => a.price - b.price);
