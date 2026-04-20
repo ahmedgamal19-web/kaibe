@@ -1277,7 +1277,7 @@ ul {
 /* ===== تحسين مظهر الروابط في الفوتر للجوال ===== */
 @media (max-width: 768px) {
   .footer-col {
-    text-align: center;
+    text-align: left;
   }
   .social-links {
     justify-content: center;
