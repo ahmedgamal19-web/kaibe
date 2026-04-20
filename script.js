@@ -90,8 +90,8 @@ const products = [
     oldPrice: 1200,
     category: "sets",
     badge: "Sale",
-    img: "Bunddle.png"
-    bestseller: false,
+    img: "Bunddle.png",
+    bestseller: false
   }
 ];
 
