@@ -413,7 +413,7 @@ function initCartSidebar() {
       });
       const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
       message += `%0A*Total: ${total} L.E*`;
-      window.open(`https://wa.me/201234567890?text=${message}`, '_blank');
+      window.open(`https://wa.me/201204818221?text=${message}`, '_blank');
     });
   }
 }
