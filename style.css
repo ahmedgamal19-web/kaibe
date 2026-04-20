@@ -1205,6 +1205,95 @@ ul {
   color: var(--dusty-rose);
 }
 
+/* ===== Pagination (Products Page) ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 50px;
+}
+
+.pagination-btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  color: var(--dark-text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover {
+  background: var(--warm-nude);
+  border-color: var(--dusty-rose);
+}
+
+.pagination-btn.active {
+  background: var(--dusty-rose);
+  color: white;
+  border-color: var(--dusty-rose);
+}
+
+/* ===== تحسين Cart Items (السلة الجانبية) ===== */
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: var(--dark-text);
+}
+
+.cart-item p {
+  color: var(--dusty-rose);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ===== تحسين مظهر select (مرتبة حسب المتصفح) ===== */
+.sort-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 14px;
+  padding-right: 40px;
+}
+
+/* ===== تحسين حالة Empty Cart ===== */
+.empty-cart {
+  text-align: center;
+  color: var(--light-text);
+  padding: 40px 20px;
+  font-size: 1rem;
+}
+
+/* ===== تحسين مظهر الروابط في الفوتر للجوال ===== */
+@media (max-width: 768px) {
+  .footer-col {
+    text-align: center;
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .newsletter-form {
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== ضبط أيقونة الواتساب لتكون فوق السلة ===== */
+.whatsapp-float {
+  z-index: 998; /* أقل من السلة الجانبية (1001) */
+}
+
 /* ==================== Responsive Enhancements ==================== */
 @media (max-width: 992px) {
   .container {
