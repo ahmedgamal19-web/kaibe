@@ -275,7 +275,7 @@ function initProductDetailPage() {
     const qty = parseInt(qtyInput.value);
     const total = product.price * qty;
     let msg = `🛍️ *Order from kaibe*%0A%0A*Product:* ${product.name}%0A*Quantity:* ${qty}%0A*Total:* ${total} L.E%0A%0APlease confirm.`;
-    window.open(`https://wa.me/201234567890?text=${msg}`, '_blank');
+    window.open(`https://wa.me/201204818221?text=${msg}`, '_blank');
   });
 
   // منتجات ذات صلة
