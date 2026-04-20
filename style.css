@@ -997,35 +997,43 @@ ul {
 }
 
 /* ===== Cart Sidebar ===== */
+/* ===== Cart Sidebar - Optimized for Mobile ===== */
 .cart-sidebar {
   position: fixed;
   top: 0;
   right: -100%;
   width: 100%;
   max-width: 400px;
-  height: 100vh;                     /* ارتفاع كامل الشاشة */
+  height: 100vh;                     /* استخدم 100vh للشاشات العادية */
+  height: 100dvh;                    /* وحدة dvh أفضل للموبايل (تدعم المتصفحات الحديثة) */
   background: var(--white);
   box-shadow: -5px 0 30px rgba(0,0,0,0.1);
   z-index: 1001;
   transition: right 0.3s;
   display: flex;
-  flex-direction: column;            /* ترتيب رأسي */
+  flex-direction: column;
+  /* ضمان عدم تجاوز المحتوى */
+  overflow: hidden;
 }
+
 .cart-sidebar.active {
   right: 0;
 }
-..cart-header {
+
+.cart-header {
   padding: 20px;
   border-bottom: 1px solid var(--border-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;                   /* لا ينكمش */
+  flex-shrink: 0;                   /* لا ينكمش أبداً */
 }
+
 .cart-header h3 {
   font-size: 1.5rem;
   color: var(--dusty-rose);
 }
+
 .cart-close {
   background: none;
   border: none;
@@ -1033,16 +1041,26 @@ ul {
   cursor: pointer;
   color: var(--light-text);
 }
+
+/* منطقة المنتجات: تأخذ المساحة المتبقية وتكون قابلة للتمرير */
 .cart-items {
-  flex: 1 1 auto;                   /* ينمو ليملأ الفراغ */
-  overflow-y: auto;                 /* تمرير إذا زادت العناصر */
+  flex: 1 1 0;                      /* قيمة 0 مع flex تعني "خذ المساحة المتاحة بالكامل" */
+  min-height: 0;                    /* مهم جداً: يسمح للعنصر بالانكماش والتمرير */
+  overflow-y: auto;                 /* تمرير عمودي عند الحاجة */
   padding: 20px;
+  /* تنسيق إضافي لضمان التمرير السلس */
+  -webkit-overflow-scrolling: touch;
 }
+
+/* تنسيق حالة السلة الفارغة */
 .empty-cart {
   text-align: center;
   color: var(--light-text);
-  margin-top: 50px;
+  padding: 40px 20px;
+  font-size: 1rem;
 }
+
+/* عنصر المنتج داخل السلة */
 .cart-item {
   display: flex;
   align-items: center;
@@ -1051,20 +1069,24 @@ ul {
   padding-bottom: 15px;
   border-bottom: 1px solid var(--border-light);
 }
+
 .cart-item img {
   width: 60px;
   height: 60px;
   object-fit: cover;
   border-radius: 10px;
 }
+
 .cart-item h4 {
   font-size: 1rem;
   margin-bottom: 5px;
 }
+
 .cart-item p {
   color: var(--dusty-rose);
   font-weight: 600;
 }
+
 .remove-item {
   margin-left: auto;
   background: none;
@@ -1073,45 +1095,31 @@ ul {
   cursor: pointer;
   transition: color 0.2s;
 }
+
 .remove-item:hover {
   color: #c0392b;
 }
+
+/* الفوتر: ثابت في الأسفل ولا ينكمش */
 .cart-footer {
   padding: 20px;
   border-top: 1px solid var(--border-light);
   background: var(--white);
   flex-shrink: 0;                   /* حجم ثابت */
-  margin-top: auto;                 /* يدفع نفسه للأسفل (مع flex) */
 }
+
 .cart-total {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 15px;
   color: var(--dark-text);
 }
+
 .cart-total span {
   color: var(--dusty-rose);
 }
-.btn-block {
-  width: 100%;
-}
-.cart-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s;
-}
-.cart-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
 
+/* زر الواتساب */
 .cart-footer .btn-block {
   width: 100%;
   background-color: var(--dusty-rose);
@@ -1127,14 +1135,28 @@ ul {
   display: block;
   margin-top: 15px;
 }
+
 .cart-footer .btn-block:hover {
   background-color: #b5837e;
 }
-.empty-cart {
-  text-align: center;
-  color: var(--light-text);
-  padding: 40px 20px;
-  font-size: 1rem;
+
+/* الـ Overlay */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.cart-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ===== Footer ===== */
