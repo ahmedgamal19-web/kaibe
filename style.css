@@ -1003,24 +1003,24 @@ ul {
   right: -100%;
   width: 100%;
   max-width: 400px;
-  height: 100vh;
-  background: white;
+  height: 100vh;                     /* ارتفاع كامل الشاشة */
+  background: var(--white);
   box-shadow: -5px 0 30px rgba(0,0,0,0.1);
   z-index: 1001;
   transition: right 0.3s;
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: column;            /* ترتيب رأسي */
 }
 .cart-sidebar.active {
   right: 0;
 }
-.cart-header {
+..cart-header {
   padding: 20px;
   border-bottom: 1px solid var(--border-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;                   /* لا ينكمش */
 }
 .cart-header h3 {
   font-size: 1.5rem;
@@ -1034,10 +1034,9 @@ ul {
   color: var(--light-text);
 }
 .cart-items {
-  flex: 1;
-  overflow-y: auto;
+  flex: 1 1 auto;                   /* ينمو ليملأ الفراغ */
+  overflow-y: auto;                 /* تمرير إذا زادت العناصر */
   padding: 20px;
-  padding-bottom: 10px;
 }
 .empty-cart {
   text-align: center;
@@ -1078,11 +1077,11 @@ ul {
   color: #c0392b;
 }
 .cart-footer {
-  padding: 40px;
+  padding: 20px;
   border-top: 1px solid var(--border-light);
-  margin-top: auto;
-  flex-shrink: 0;
-  
+  background: var(--white);
+  flex-shrink: 0;                   /* حجم ثابت */
+  margin-top: auto;                 /* يدفع نفسه للأسفل (مع flex) */
 }
 .cart-total {
   font-size: 1.3rem;
@@ -1119,10 +1118,23 @@ ul {
   color: white;
   border: none;
   padding: 16px 20px;
-  border-radius: 50px;
+  font-size: 1rem;
   font-weight: 600;
+  border-radius: 50px;
+  transition: background 0.3s;
   cursor: pointer;
-  margin-top: 10px;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}
+.cart-footer .btn-block:hover {
+  background-color: #b5837e;
+}
+.empty-cart {
+  text-align: center;
+  color: var(--light-text);
+  padding: 40px 20px;
+  font-size: 1rem;
 }
 
 /* ===== Footer ===== */
