@@ -1108,6 +1108,17 @@ ul {
   visibility: visible;
 }
 
+.cart-footer .btn-block {
+  width: 100%;
+  background-color: var(--dusty-rose);
+  color: white;
+  border: none;
+  padding: 16px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* ===== Footer ===== */
 .footer {
   background-color: var(--dark-text);
