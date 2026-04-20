@@ -1078,10 +1078,11 @@ ul {
   color: #c0392b;
 }
 .cart-footer {
-  padding: 20px 20px 30px;
+  padding: 40px;
   border-top: 1px solid var(--border-light);
   margin-top: auto;
   flex-shrink: 0;
+  
 }
 .cart-total {
   font-size: 1.3rem;
