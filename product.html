@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Product Details • kaibe</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== شريط الإعلان الدوار ===== -->
+  <div class="announcement-bar">
+    <div class="announcement-slider">
+      <div class="announcement-slide">✨ Free shipping on orders over 750 L.E</div>
+      <div class="announcement-slide">🌿 Cruelty‑free & vegan formulas</div>
+      <div class="announcement-slide">🎁 Free sample with every order</div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="kaibe logo" onerror="this.style.display='none'">
+        <span class="logo-text">kaibe</span>
+        <span class="logo-dot">.</span>
+      </a>
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="policies.html" class="nav-link">Policies</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+          <a href="#" class="search-toggle" aria-label="Search"><i class="fas fa-search"></i></a>
+          <a href="#" class="cart-toggle" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+        </div>
+        <div class="hamburger" aria-label="Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </div>
+    <!-- شريط البحث المخفي -->
+    <div class="search-overlay">
+      <div class="container">
+        <input type="text" id="searchInput" placeholder="Search for products..." class="search-input">
+        <button class="search-close"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Breadcrumb & Title -->
+    <section class="page-banner">
+      <div class="container">
+        <h1 class="page-title" id="productTitle">Product Details</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span>
+          <a href="products.html">Products</a> <span>/</span>
+          <span id="productCrumb">Loading...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+      <div class="container">
+        <div class="product-detail-grid">
+          <!-- صورة المنتج -->
+          <div class="product-detail-img">
+            <img id="detailImg" src="" alt="Product Image">
+            <span id="detailBadge" class="product-badge-detail"></span>
+          </div>
+          <!-- معلومات المنتج -->
+          <div class="product-detail-info">
+            <h2 id="detailName">Hydrating Serum</h2>
+            <div class="detail-price-wrapper">
+              <span id="detailPrice" class="detail-current-price">250 L.E</span>
+              <span id="detailOldPrice" class="detail-old-price">300 L.E</span>
+            </div>
+            <p id="detailDesc" class="detail-desc">A lightweight serum that deeply hydrates and plumps the skin.</p>
+            
+            <!-- الكمية -->
+            <div class="quantity-selector">
+              <label>Quantity:</label>
+              <div class="quantity-control">
+                <button id="qtyMinus"><i class="fas fa-minus"></i></button>
+                <input type="number" id="qtyInput" value="1" min="1" max="99" readonly>
+                <button id="qtyPlus"><i class="fas fa-plus"></i></button>
+              </div>
+            </div>
+
+            <!-- أزرار الإجراءات -->
+            <div class="detail-actions">
+              <button id="addToCartBtn" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+              <button id="whatsappOrderBtn" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Order via WhatsApp</button>
+            </div>
+
+            <!-- معلومات إضافية (شحن، إرجاع) -->
+            <div class="detail-meta">
+              <div class="meta-item"><i class="fas fa-truck"></i> Free shipping over 750 L.E</div>
+              <div class="meta-item"><i class="fas fa-undo-alt"></i> 30-day easy returns</div>
+              <div class="meta-item"><i class="fas fa-leaf"></i> Cruelty-free & vegan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- قد يعجبك أيضاً (اختياري) -->
+    <section class="related-products">
+      <div class="container">
+        <h3 class="related-title">You may also like</h3>
+        <div class="product-grid" id="relatedGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h5>kaibe</h5>
+        <p>Clean beauty for radiant skin & healthy hair.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/kaibe_daily?igsh=bnJuZ3VyZGloMWM1" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="policies.html">Policies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Policies</h5>
+        <ul>
+          <li><a href="policies.html#shipping">Shipping</a></li>
+          <li><a href="policies.html#returns">Returns</a></li>
+          <li><a href="policies.html#privacy">Privacy</a></li>
+          <li><a href="policies.html#terms">Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Newsletter</h5>
+        <p>Subscribe for exclusive offers.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 kaibe. All rights reserved.</p>
+        <p class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== أيقونة واتساب عائمة ===== -->
+  <a href="https://wa.me/201234567890" class="whatsapp-float" target="_blank" aria-label="Order via WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ===== سلة جانبية ===== -->
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items">
+      <p class="empty-cart">Your cart is empty</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <span>0 L.E</span></div>
+      <button class="btn btn-primary btn-block">Checkout via WhatsApp</button>
+    </div>
+  </div>
+  <div class="cart-overlay"></div>
