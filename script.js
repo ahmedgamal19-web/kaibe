@@ -46,7 +46,7 @@ const products = [
     oldPrice: null,
     category: "skincare",
     badge: "",
-    img: "",
+    img: "COMING.png",
     bestseller: true
   },
   {
@@ -57,7 +57,7 @@ const products = [
     oldPrice: null,
     category: "skincare",
     badge: "",
-    img: "",
+    img: "COMING.png",
     bestseller: false
   },
   {
@@ -68,7 +68,7 @@ const products = [
     oldPrice: 400,
     category: "skincare",
     badge: "",
-    img: "",
+    img: "COMING.png",
     bestseller: false
   },
   {
@@ -79,7 +79,7 @@ const products = [
     oldPrice: null,
     category: "body",
     badge: "",
-    img: "",
+    img: "COMING.png",
     bestseller: false
   },
   {
