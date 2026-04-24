@@ -5,25 +5,29 @@
 
 // ==================== بيانات  المنتجات (موحدة) ====================
 const products = [
-  {
+   {
     id: 1,
-    name: "Hydrating Serum",
-    desc: "A lightweight serum with hyaluronic acid and rose extract that deeply hydrates and plumps the skin, leaving it radiant and smooth.",
-    price: 250,
-    oldPrice: null,
-    category: "skincare",
-    badge: "New",
+    name: "Shampoo",
+    desc: "KAIBE Shampoo\n  KAIBE Shampoo is part of a "7-Day Repair Routine For Damaged Hair".\n Repairing shampoo for damaged hair -\nRepair, Renew, Restore\nGently cleanses and nourishes hair, restoring moisture, shine, and strength while protecting against dryness and damage.",
+    benefits: "The KAIBE Shampoo, enriched with Argan Oil, Collagen, Keratin, and Pro-Vitamin B5, is specially formulated to provide intense repair for all types of hair damage. After following the full routine, you'll notice a significant difference! Enriched with powerful ingredients, this line restores and rejuvenates, leaving your hair healthier and shinier.",
+    howToUse: "Apply a small amount to wet hair, massage into scalp and hair, then rinse thoroughly.",
+    price: 349,
+    oldPrice: 399,
+    category: "haircare",
+    badge: "NEW",
     img: "Shampoo.png",
     bestseller: true
   },
-  {
+   {
     id: 2,
     name: "Hair Mask",
-    desc: "Intensive repair mask with argan and jojoba oils. Restores moisture and shine to damaged hair.",
-    price: 150,
-    oldPrice: null,
+    desc: "KAIBE Hair Mask \n KAIB Hair Mask is part of a "7-Day Repair Routine For Damaged Hair".\nRepairing Hair Mask for damaged hair - Repair, Renew, Restore\nDeeply nourishes and revitalizes hair, restoring softness, shine, and strength while protecting against damage.\nMoroccan Argan Repair Hair Mask is part of a "7-Day Repair Routine For Damaged Hair".",
+    benefits: "The KAIBE Shampoo, enriched with Argan Oil, Collagen, Keratin, and Pro-Vitamin B5, is specially formulated to provide intense repair for all types of hair damage. After following the full routine, you'll notice a significant difference! Enriched with powerful ingredients, this line restores and rejuvenates, leaving your hair healthier and shinier.",
+    howToUse: "After shampooing, apply a generous amount of mask to damp hair, focusing on mid-lengths to ends. Leave on for 5-10 minutes for regular conditioning or up to 30 minutes for deep treatment, then rinse thoroughly with water before styling as usual. Recommended for use 1-2 times per week.",
+    price: 399,
+    oldPrice: 449,
     category: "haircare",
-    badge: "",
+    badge: "NEW",
     img: "Hair Mask.png",
     bestseller: true
   },
