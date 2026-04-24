@@ -626,29 +626,33 @@ function initFlashCountdown() {
   const hoursEl = document.getElementById('countdownHours');
   const minutesEl = document.getElementById('countdownMinutes');
   const secondsEl = document.getElementById('countdownSeconds');
+  const flashBar = document.getElementById('flashSaleBar');
   
   if (!hoursEl || !minutesEl || !secondsEl) return;
 
-  // تحديد وقت الانتهاء (مثلاً: 24 ساعة من الآن)
-  const endTime = localStorage.getItem('kaibe_flash_end');
-  let targetTime;
-  
-  if (endTime) {
-    targetTime = parseInt(endTime);
-  } else {
+  function getTargetTime() {
+    const now = new Date().getTime();
     // 24 ساعة من الآن
-    targetTime = new Date().getTime() + (24 * 60 * 60 * 1000);
-    localStorage.setItem('kaibe_flash_end', targetTime);
+    return now + (24 * 60 * 60 * 1000);
   }
 
   function updateCountdown() {
+    // قراءة الوقت المخزن أو إنشاء جديد
+    let targetTime = parseInt(localStorage.getItem('kaibe_flash_end'));
+    if (!targetTime || targetTime < new Date().getTime()) {
+      targetTime = getTargetTime();
+      localStorage.setItem('kaibe_flash_end', targetTime);
+      if (flashBar) flashBar.style.display = 'block'; // تأكد من ظهوره
+    }
+
     const now = new Date().getTime();
     const distance = targetTime - now;
 
     if (distance < 0) {
-      // انتهى الوقت
-      document.getElementById('flashSaleBar').style.display = 'none';
-      localStorage.removeItem('kaibe_flash_end');
+      // انتهى الوقت – إعادة تعيين تلقائي
+      targetTime = getTargetTime();
+      localStorage.setItem('kaibe_flash_end', targetTime);
+      updateCountdown(); // إعادة الاستدعاء فوراً
       return;
     }
 
@@ -660,11 +664,10 @@ function initFlashCountdown() {
     minutesEl.textContent = String(minutes).padStart(2, '0');
     secondsEl.textContent = String(seconds).padStart(2, '0');
 
-    // تغيير اللون عند اقتراب النهاية (أقل من ساعة)
+    // تغيير اللون عند اقتراب النهاية
     if (distance < 60 * 60 * 1000) {
       document.querySelectorAll('.countdown-value').forEach(el => {
         el.style.color = '#e74c3c';
-        el.style.animation = 'pulse 1s infinite';
       });
     }
   }
@@ -672,42 +675,6 @@ function initFlashCountdown() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 }
-
-// أضف هذا الاستدعاء داخل DOMContentLoaded الموجود
-// initFlashCountdown();
-
-// ==================== التهيئة العامة ====================
-document.addEventListener('DOMContentLoaded', () => {
-  // تهيئة المكونات المشتركة
-  initSearch();
-  initCartSidebar();
-  initMobileMenu();
-  initStickyHeader();
-  initNewsletter();
-  initContactForm();
-  updateCartUI();
-  initFlashCountdown();
-
-  // تحميل الصفحة المناسبة
-  if (document.getElementById('productGrid')) {
-    // الصفحات التي تحتوي على شبكة منتجات (index, products)
-    renderProducts();
-    initFiltersAndSort();
-  }
-
-  // صفحة تفاصيل المنتج
-  initProductDetailPage();
-
-  // إضافة مستمع لحدث تغيير عدد المنتجات في الصفحة
-  const productsPerPageSelect = document.getElementById('productsPerPage');
-  if (productsPerPageSelect) {
-    productsPerPageSelect.addEventListener('change', (e) => {
-      productsPerPage = parseInt(e.target.value);
-      currentPage = 1; // العودة للصفحة الأولى
-      renderProducts(currentFilter, currentSort, currentPage);
-    });
-  }
-});
 // ==================== تصدير للاستخدام العام ====================
 window.kaibe = {
   renderProducts,
