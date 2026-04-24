@@ -620,6 +620,62 @@ function initContactForm() {
   }
 }
 
+
+// ==================== العداد التنازلي للعرض الترويجي ====================
+function initFlashCountdown() {
+  const hoursEl = document.getElementById('countdownHours');
+  const minutesEl = document.getElementById('countdownMinutes');
+  const secondsEl = document.getElementById('countdownSeconds');
+  
+  if (!hoursEl || !minutesEl || !secondsEl) return;
+
+  // تحديد وقت الانتهاء (مثلاً: 24 ساعة من الآن)
+  const endTime = localStorage.getItem('kaibe_flash_end');
+  let targetTime;
+  
+  if (endTime) {
+    targetTime = parseInt(endTime);
+  } else {
+    // 24 ساعة من الآن
+    targetTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+    localStorage.setItem('kaibe_flash_end', targetTime);
+  }
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetTime - now;
+
+    if (distance < 0) {
+      // انتهى الوقت
+      document.getElementById('flashSaleBar').style.display = 'none';
+      localStorage.removeItem('kaibe_flash_end');
+      return;
+    }
+
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    hoursEl.textContent = String(hours).padStart(2, '0');
+    minutesEl.textContent = String(minutes).padStart(2, '0');
+    secondsEl.textContent = String(seconds).padStart(2, '0');
+
+    // تغيير اللون عند اقتراب النهاية (أقل من ساعة)
+    if (distance < 60 * 60 * 1000) {
+      document.querySelectorAll('.countdown-value').forEach(el => {
+        el.style.color = '#e74c3c';
+        el.style.animation = 'pulse 1s infinite';
+      });
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+// أضف هذا الاستدعاء داخل DOMContentLoaded الموجود
+// initFlashCountdown();
+
 // ==================== التهيئة العامة ====================
 document.addEventListener('DOMContentLoaded', () => {
   // تهيئة المكونات المشتركة
@@ -630,6 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsletter();
   initContactForm();
   updateCartUI();
+  initFlashCountdown();
 
   // تحميل الصفحة المناسبة
   if (document.getElementById('productGrid')) {
