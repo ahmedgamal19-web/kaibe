@@ -81,7 +81,7 @@ const products = [
     category: "skincare",
     badge: "☀️ Daily Essential",
     img: "COMING.png",
-    bestseller: true
+    bestseller: false
 },
 {
     id: 7,
@@ -107,7 +107,7 @@ const products = [
     category: "haircare",
     badge: "🌿 Natural Care",
     img: "COMING.png",
-    bestseller: true
+    bestseller: false
 }
 ];
 
