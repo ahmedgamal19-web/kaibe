@@ -2114,3 +2114,54 @@ ul {
     font-size: 0.7rem;
   }
 }
+
+
+/* تحسينات إضافية للمراجعات */
+.review-verified {
+  color: var(--olive-sage);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.review-verified i {
+  margin-right: 4px;
+}
+
+.review-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--dark-text);
+  margin-bottom: 8px;
+}
+
+.review-helpful {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--light-text);
+}
+
+.helpful-btn {
+  background: var(--soft-cream);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--light-text);
+}
+
+.helpful-btn:hover {
+  background: var(--warm-nude);
+  border-color: var(--dusty-rose);
+  color: var(--dusty-rose);
+}
+
+/* تقييم النجوم الفارغة */
+.review-stars .far.fa-star {
+  color: #ddd;
+}
