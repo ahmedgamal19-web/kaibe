@@ -634,10 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // صفحة تفاصيل المنتج
   initProductDetailPage();
 
-
-  
-   
-     // إضافة مستمع لحدث تغيير عدد المنتجات في الصفحة
+  // إضافة مستمع لحدث تغيير عدد المنتجات في الصفحة
   const productsPerPageSelect = document.getElementById('productsPerPage');
   if (productsPerPageSelect) {
     productsPerPageSelect.addEventListener('change', (e) => {
@@ -646,9 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderProducts(currentFilter, currentSort, currentPage);
     });
   }
-
 });
-
 // ==================== تصدير للاستخدام العام ====================
 window.kaibe = {
   renderProducts,
