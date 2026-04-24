@@ -1945,6 +1945,7 @@ ul {
 
 
 /* ===== Flash Sale Bar (شريط العروض مع عداد تنازلي) ===== */
+/* ===== Flash Sale Bar (شريط العروض مع عداد تنازلي) ===== */
 .flash-sale-bar {
   background: linear-gradient(135deg, #2E2E2E 0%, #3a3a3a 100%);
   color: white;
@@ -1955,36 +1956,33 @@ ul {
 }
 
 @keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .flash-sale-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 10px 32px;
+  gap: 12px;
+  padding: 8px 40px 8px 16px;
   flex-wrap: wrap;
   position: relative;
+  min-height: 40px;
 }
 
 .flash-sale-content {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
+  gap: 8px;
+  font-size: 0.85rem;
   font-weight: 400;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .flash-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
   animation: pulse 2s infinite;
 }
 
@@ -2004,9 +2002,10 @@ ul {
 
 .flash-code {
   background: rgba(199, 154, 149, 0.2);
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 .flash-code strong {
@@ -2019,21 +2018,21 @@ ul {
 .flash-countdown {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   background: rgba(0,0,0,0.3);
-  padding: 8px 16px;
-  border-radius: 30px;
+  padding: 5px 12px;
+  border-radius: 25px;
 }
 
 .countdown-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 40px;
+  min-width: 32px;
 }
 
 .countdown-value {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--dusty-rose);
   font-family: 'Poppins', sans-serif;
@@ -2041,30 +2040,31 @@ ul {
 }
 
 .countdown-label {
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   color: rgba(255,255,255,0.6);
 }
 
 .countdown-separator {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: rgba(255,255,255,0.5);
-  margin-top: -10px;
+  margin-top: -8px;
 }
 
 .flash-close {
   position: absolute;
-  right: 20px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: rgba(255,255,255,0.5);
-  font-size: 1rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
   cursor: pointer;
   transition: color 0.3s;
+  padding: 5px;
 }
 
 .flash-close:hover {
@@ -2074,36 +2074,64 @@ ul {
 /* تحسينات للموبايل */
 @media (max-width: 768px) {
   .flash-sale-container {
-    flex-direction: column;
-    gap: 5px;
-    padding: 12px 40px 12px 20px;
-    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 35px 6px 10px;
+    min-height: 36px;
   }
   
   .flash-sale-content {
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+  
+  .flash-icon {
+    font-size: 0.9rem;
+  }
+  
+  .flash-code {
+    font-size: 0.7rem;
+    padding: 2px 8px;
   }
   
   .flash-countdown {
-    padding: 6px 12px;
+    padding: 4px 10px;
+    gap: 2px;
+  }
+  
+  .countdown-item {
+    min-width: 28px;
   }
   
   .countdown-value {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+  }
+  
+  .countdown-label {
+    font-size: 0.5rem;
+  }
+  
+  .countdown-separator {
+    font-size: 0.85rem;
+    margin-top: -6px;
   }
   
   .flash-close {
-    right: 10px;
-    top: 10px;
-    transform: none;
+    right: 8px;
+    font-size: 0.75rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 400px) {
+  .flash-sale-container {
+    padding: 5px 30px 5px 8px;
+    gap: 4px;
+  }
+  
   .flash-sale-content {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   
   .flash-divider {
@@ -2111,9 +2139,20 @@ ul {
   }
   
   .flash-code {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+  }
+  
+  .flash-countdown {
+    padding: 3px 8px;
+  }
+  
+  .countdown-value {
+    font-size: 0.85rem;
+  }
+  
+  .countdown-label {
+    font-size: 0.45rem;
   }
 }
-
 
 
