@@ -1778,3 +1778,66 @@ ul {
 .home .filter-bar {
   display: none;
 }
+
+
+/* ===== Product Detail Tabs ===== */
+.detail-tabs {
+  margin: 25px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: -1px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--light-text);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab-btn:hover {
+  color: var(--dusty-rose);
+}
+
+.tab-btn.active {
+  color: var(--dusty-rose);
+  border-bottom: 2px solid var(--dusty-rose);
+}
+
+.tab-content {
+  display: none;
+  padding: 20px 0;
+  color: var(--light-text);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content p {
+  white-space: pre-line;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .tab-buttons {
+    gap: 5px;
+  }
+  .tab-btn {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+  }
+}
