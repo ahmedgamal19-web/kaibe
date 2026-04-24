@@ -41,7 +41,7 @@ const products = [
     oldPrice: 399,
     category: "haircare",
     badge: "Top Rated",
-    img: "Hair Mask.png",
+    img: "conditioner.png",
     bestseller: true
 },
 {
