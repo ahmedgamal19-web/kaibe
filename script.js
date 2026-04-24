@@ -302,6 +302,13 @@ function renderPaginationButtons(totalProducts) {
   });
 }
 
+function attachAddToCartEvents() {
+  document.querySelectorAll('.btn-add').forEach(btn => {
+    btn.removeEventListener('click', handleAddToCart);
+    btn.addEventListener('click', handleAddToCart);
+  });
+}
+
 function handleAddToCart(e) {
   e.stopPropagation(); // يمنع الانتقال إلى صفحة التفاصيل عند الضغط على الزر
   e.preventDefault();
