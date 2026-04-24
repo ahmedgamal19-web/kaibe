@@ -1942,3 +1942,175 @@ ul {
     font-size: 0.85rem;
   }
 }
+
+
+/* ===== Flash Sale Bar (شريط العروض مع عداد تنازلي) ===== */
+.flash-sale-bar {
+  background: linear-gradient(135deg, #2E2E2E 0%, #3a3a3a 100%);
+  color: white;
+  padding: 0;
+  position: relative;
+  z-index: 102;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.flash-sale-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 32px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.flash-sale-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.flash-icon {
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.flash-text strong {
+  color: var(--dusty-rose);
+  font-weight: 700;
+}
+
+.flash-divider {
+  color: rgba(255,255,255,0.3);
+}
+
+.flash-code {
+  background: rgba(199, 154, 149, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.flash-code strong {
+  color: var(--dusty-rose);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* العداد التنازلي */
+.flash-countdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0,0,0,0.3);
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40px;
+}
+
+.countdown-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--dusty-rose);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.6);
+}
+
+.countdown-separator {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  margin-top: -10px;
+}
+
+.flash-close {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.flash-close:hover {
+  color: white;
+}
+
+/* تحسينات للموبايل */
+@media (max-width: 768px) {
+  .flash-sale-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 40px 12px 20px;
+    text-align: center;
+  }
+  
+  .flash-sale-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+  
+  .flash-countdown {
+    padding: 6px 12px;
+  }
+  
+  .countdown-value {
+    font-size: 1.1rem;
+  }
+  
+  .flash-close {
+    right: 10px;
+    top: 10px;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .flash-sale-content {
+    font-size: 0.75rem;
+  }
+  
+  .flash-divider {
+    display: none;
+  }
+  
+  .flash-code {
+    font-size: 0.7rem;
+  }
+}
