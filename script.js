@@ -675,6 +675,41 @@ function initFlashCountdown() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 }
+
+// ==================== التهيئة العامة ====================
+document.addEventListener('DOMContentLoaded', () => {
+  // تهيئة المكونات المشتركة
+  initSearch();
+  initCartSidebar();
+  initMobileMenu();
+  initStickyHeader();
+  initNewsletter();
+  initContactForm();
+  updateCartUI();
+
+  // تحميل الصفحة المناسبة
+  if (document.getElementById('productGrid')) {
+    // الصفحات التي تحتوي على شبكة منتجات (index, products)
+    renderProducts();
+    initFiltersAndSort();
+  }
+
+  // صفحة تفاصيل المنتج
+  initProductDetailPage();
+
+  // إضافة مستمع لحدث تغيير عدد المنتجات في الصفحة
+  const productsPerPageSelect = document.getElementById('productsPerPage');
+  if (productsPerPageSelect) {
+    productsPerPageSelect.addEventListener('change', (e) => {
+      productsPerPage = parseInt(e.target.value);
+      currentPage = 1; // العودة للصفحة الأولى
+      renderProducts(currentFilter, currentSort, currentPage);
+    });
+  }
+
+  // تشغيل العداد التنازلي
+  initFlashCountdown();
+
 // ==================== تصدير للاستخدام العام ====================
 window.kaibe = {
   renderProducts,
