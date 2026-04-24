@@ -710,6 +710,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // تشغيل العداد التنازلي
   initFlashCountdown();
 
+});
+
 // ==================== تصدير للاستخدام العام ====================
 window.kaibe = {
   renderProducts,
