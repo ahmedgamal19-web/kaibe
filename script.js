@@ -116,6 +116,12 @@ let cart = JSON.parse(localStorage.getItem('kaibe_cart')) || [];
 let currentFilter = 'all';
 let currentSort = 'featured';
 
+
+// ==================== Pagination Variables ====================
+let currentPage = 1;
+let productsPerPage = 8; // القيمة الافتراضية
+let totalPages = 1;
+
 // ==================== دوال عامة ====================
 function saveCart() {
   localStorage.setItem('kaibe_cart', JSON.stringify(cart));
@@ -161,29 +167,39 @@ function updateCartUI() {
 }
 
 // ==================== عرض المنتجات في الشبكات ====================
-function renderProducts(filter = currentFilter, sort = currentSort) {
+// ==================== عرض المنتجات مع Pagination ====================
+function renderProducts(filter = currentFilter, sort = currentSort, page = currentPage) {
   const grid = document.getElementById('productGrid');
   if (!grid) return;
 
-  // هل نحن في الصفحة الرئيسية؟ (نتحقق من وجود عنصر خاص بالهوم مثل .hero)
-const isHomePage = document.querySelector('.hero') !== null;
+  const isHomePage = !!document.querySelector('.hero');
+  let filtered;
 
-let filtered;
-if (isHomePage) {
-  // في الصفحة الرئيسية: نعرض فقط المنتجات التي bestseller = true
-  filtered = products.filter(p => p.bestseller === true);
-} else {
-  // في صفحة المنتجات: نعرض حسب الفلتر العادي
-  filtered = filter === 'all' ? [...products] : products.filter(p => p.category === filter);
-}
-
-  if (sort === 'price-asc') {
-    filtered.sort((a, b) => a.price - b.price);
-  } else if (sort === 'price-desc') {
-    filtered.sort((a, b) => b.price - a.price);
+  if (isHomePage) {
+    filtered = products.filter(p => p.bestseller === true);
+    if (sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
+    else if (sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
+  } else {
+    filtered = filter === 'all' ? [...products] : products.filter(p => p.category === filter);
+    if (sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
+    else if (sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
   }
 
-  grid.innerHTML = filtered.map(p => `
+  // تطبيق Pagination
+  let paginatedProducts;
+  if (isHomePage || productsPerPage === 0) {
+    // عرض الكل في الصفحة الرئيسية أو إذا اختار "All"
+    paginatedProducts = filtered;
+  } else {
+    currentPage = page;
+    totalPages = Math.ceil(filtered.length / productsPerPage);
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    paginatedProducts = filtered.slice(start, end);
+  }
+
+  // توليد HTML الشبكة
+  grid.innerHTML = paginatedProducts.map(p => `
     <div class="product-card" data-category="${p.category}" data-id="${p.id}" onclick="location.href='product.html?id=${p.id}'" style="cursor: pointer;">
       <div class="product-img">
         <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -205,12 +221,84 @@ if (isHomePage) {
   `).join('');
 
   attachAddToCartEvents();
+  
+  // تحديث أزرار الصفحات
+  if (!isHomePage) {
+    renderPaginationButtons(filtered.length);
+  }
 }
 
-function attachAddToCartEvents() {
-  document.querySelectorAll('.btn-add').forEach(btn => {
-    btn.removeEventListener('click', handleAddToCart);
-    btn.addEventListener('click', handleAddToCart);
+
+// ==================== عرض أزرار Pagination ====================
+function renderPaginationButtons(totalProducts) {
+  const paginationDiv = document.getElementById('pagination');
+  if (!paginationDiv || productsPerPage === 0) {
+    if (paginationDiv) paginationDiv.innerHTML = '';
+    return;
+  }
+
+  totalPages = Math.ceil(totalProducts / productsPerPage);
+  
+  if (totalPages <= 1) {
+    paginationDiv.innerHTML = '';
+    return;
+  }
+
+  let html = '';
+  
+  // زر السابق
+  html += `<button class="pagination-btn ${currentPage === 1 ? 'disabled' : ''}" data-page="prev">
+    <i class="fas fa-chevron-left"></i>
+  </button>`;
+  
+  // أرقام الصفحات
+  const maxButtons = 5; // عدد الأزرار المرئية
+  let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
+  let endPage = Math.min(totalPages, startPage + maxButtons - 1);
+  
+  if (endPage - startPage < maxButtons - 1) {
+    startPage = Math.max(1, endPage - maxButtons + 1);
+  }
+  
+  if (startPage > 1) {
+    html += `<button class="pagination-btn" data-page="1">1</button>`;
+    if (startPage > 2) html += `<span class="pagination-dots">...</span>`;
+  }
+  
+  for (let i = startPage; i <= endPage; i++) {
+    html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+  }
+  
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) html += `<span class="pagination-dots">...</span>`;
+    html += `<button class="pagination-btn" data-page="${totalPages}">${totalPages}</button>`;
+  }
+  
+  // زر التالي
+  html += `<button class="pagination-btn ${currentPage === totalPages ? 'disabled' : ''}" data-page="next">
+    <i class="fas fa-chevron-right"></i>
+  </button>`;
+
+  paginationDiv.innerHTML = html;
+
+  // ربط الأحداث
+  document.querySelectorAll('.pagination-btn[data-page]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const action = btn.dataset.page;
+      
+      if (action === 'prev') {
+        currentPage = Math.max(1, currentPage - 1);
+      } else if (action === 'next') {
+        currentPage = Math.min(totalPages, currentPage + 1);
+      } else {
+        currentPage = parseInt(action);
+      }
+      
+      renderProducts(currentFilter, currentSort, currentPage);
+      
+      // تمرير لأعلى الصفحة بسلاسة
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   });
 }
 
@@ -545,6 +633,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // صفحة تفاصيل المنتج
   initProductDetailPage();
+
+
+  
+   
+     // إضافة مستمع لحدث تغيير عدد المنتجات في الصفحة
+  const productsPerPageSelect = document.getElementById('productsPerPage');
+  if (productsPerPageSelect) {
+    productsPerPageSelect.addEventListener('change', (e) => {
+      productsPerPage = parseInt(e.target.value);
+      currentPage = 1; // العودة للصفحة الأولى
+      renderProducts(currentFilter, currentSort, currentPage);
+    });
+  }
+
 });
 
 // ==================== تصدير للاستخدام العام ====================
