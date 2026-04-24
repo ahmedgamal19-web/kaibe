@@ -14,7 +14,7 @@ const products = [
     price: 349,
     oldPrice: 399,
     category: "haircare",
-    badge: "NEW",
+    badge: "✨ Glow Boos",
     img: "Shampoo.png",
     bestseller: true
   },
@@ -22,81 +22,106 @@ const products = [
     id: 2,
     name: "Hair Mask",
     desc: "KAIBE Hair Mask \n KAIB Hair Mask is part of a "7-Day Repair Routine For Damaged Hair".\nRepairing Hair Mask for damaged hair - Repair, Renew, Restore\nDeeply nourishes and revitalizes hair, restoring softness, shine, and strength while protecting against damage.\nMoroccan Argan Repair Hair Mask is part of a "7-Day Repair Routine For Damaged Hair".",
-    benefits: "The KAIBE Shampoo, enriched with Argan Oil, Collagen, Keratin, and Pro-Vitamin B5, is specially formulated to provide intense repair for all types of hair damage. After following the full routine, you'll notice a significant difference! Enriched with powerful ingredients, this line restores and rejuvenates, leaving your hair healthier and shinier.",
+    benefits: "The KAIBE Hair Mask, enriched with Argan Oil, Collagen, Keratin, and Pro-Vitamin B5, is specially formulated to provide intense repair for all types of hair damage. After following the full routine, you'll notice a significant difference! Enriched with powerful ingredients, this line restores and rejuvenates, leaving your hair healthier and shinier.",
     howToUse: "After shampooing, apply a generous amount of mask to damp hair, focusing on mid-lengths to ends. Leave on for 5-10 minutes for regular conditioning or up to 30 minutes for deep treatment, then rinse thoroughly with water before styling as usual. Recommended for use 1-2 times per week.",
     price: 399,
     oldPrice: 449,
     category: "haircare",
-    badge: "NEW",
+    badge: "Limited Stock",
     img: "Hair Mask.png",
     bestseller: true
   },
-  {
+   {
     id: 3,
+    name: "Condetioner",
+    desc: "KAIBE Conditioner\nMoroccan Argan Repair Conditioner is part of a "7-Day Repair Routine For Damaged Hair".\nRepairing Conditioner for damaged hair - Repair, Renew, Restore\nHydrates, Enhances manageability, shine, and strength while reducing frizz and protecting against damage\nMoroccan Argan Repair Conditioner is part of a "7-Day Repair Routine For Damaged Hair".",
+    benefits: "The KAIBE Condetioner, enriched with Argan Oil, Collagen, Keratin, and Pro-Vitamin B5, is specially formulated to provide intense repair for all types of hair damage. After following the full routine, you'll notice a significant difference! Enriched with powerful ingredients, this line restores and rejuvenates, leaving your hair healthier and shinier.",
+    howToUse: "After shampooing, apply a generous amount of conditioner to wet hair, focusing on mid-lengths to ends. Leave on for 2-3 minutes, then rinse thoroughly.",
+    price: 349,
+    oldPrice: 399,
+    category: "haircare",
+    badge: "Top Rated",
+    img: "Hair Mask.png",
+    bestseller: true
+  },
+
+   {
+    id: 4,
     name: "Bundle",
     desc: "Complete skincare routine: Hydrating Serum + Moisturizer + Calming Mist. Perfect for daily glow.",
-    price: 750,
-    oldPrice: 1000,
+    benefits: "The KAIBE 7-Day Repair Bundle is enriched with Argan Oil, Collagen, Keratin, and Pro-Vitamin B5 to deliver a complete hair transformation.\n• Repairs damaged hair and reduces breakage\n• Deeply nourishes and restores moisture\n• Strengthens hair and improves elasticity\n• Reduces frizz and enhances smoothness\n• Adds natural shine and softness \n• Protects hair from future damage\nWith consistent use, your hair becomes healthier, stronger, and visibly revitalized.",
+    howToUse: "Step 1: Shampoo\nApply to wet hair, massage gently into scalp and hair, then rinse thoroughly.\nStep 2: Hair Mask\nApply to damp hair, focusing on mid-lengths to ends.\nLeave for 5–10 minutes (or up to 30 minutes for deep repair), then rinse well.\nUse 1–2 times per week.\nStep 3: Conditioner\nAfter shampoo or mask, apply to wet hair focusing on mid-lengths to ends.\nLeave for 2–3 minutes, then rinse thoroughly.\nFor best results, follow the full routine regularly.", 
+    price: 944,
+    oldPrice: 1049,
     category: "sets",
-    badge: "Sale",
+    badge: "⌛ Limited Time Offer",
     img: "Bunddle.png",
     bestseller: true
   },
-  {
-    id: 4,
-    name: "Calming Mist",
-    desc: "Rosewater and aloe vera facial mist to refresh and soothe sensitive skin.",
-    price: 240,
-    oldPrice: null,
-    category: "skincare",
-    badge: "",
-    img: "COMING.png",
-    bestseller: true
-  },
-  {
-    id: 5,
-    name: "Vitamin C Cream",
-    desc: "Brightening daily moisturizer with vitamin C and antioxidants. Evens skin tone and boosts radiance.",
-    price: 380,
-    oldPrice: null,
-    category: "skincare",
-    badge: "",
-    img: "COMING.png",
-    bestseller: false
-  },
-  {
-    id: 6,
-    name: "Clay Mask",
-    desc: "Purifying clay mask that draws out impurities and minimizes pores. Suitable for oily and combination skin.",
-    price: 320,
-    oldPrice: 400,
-    category: "skincare",
-    badge: "",
-    img: "COMING.png",
-    bestseller: false
-  },
-  {
-    id: 7,
-    name: "Body Scrub",
-    desc: "Exfoliating body scrub with coffee grounds and coconut oil. Leaves skin soft and smooth.",
-    price: 280,
-    oldPrice: null,
-    category: "body",
-    badge: "",
-    img: "COMING.png",
-    bestseller: false
-  },
-  {
-    id: 8,
-    name: "Glow Set",
-    desc: "Deluxe set: Hydrating Serum + Vitamin C Cream + Calming Mist. The ultimate glow trio.",
-    price: 890,
-    oldPrice: 1200,
-    category: "sets",
-    badge: "Sale",
-    img: "Bunddle.png",
-    bestseller: false
-  }
+ {
+  id: 5,
+  name: "KAIBE Hydrating Serum",
+  desc: "KAIBE Hydrating Serum\nLightweight serum designed to deeply hydrate and plump the skin.\nInfused with Hyaluronic Acid and Vitamin B5 to lock in moisture and improve skin texture.\nPerfect for daily use for a smooth, radiant glow.",
+
+  benefits: "The KAIBE Hydrating Serum delivers intense hydration and skin renewal.\n• Deeply hydrates and locks in moisture\n• Plumps and smooths fine lines\n• Improves skin texture and softness\n• Enhances natural glow and radiance\n• Lightweight and fast-absorbing formula\nWith regular use, skin becomes smoother, fresher, and visibly healthier.",
+
+  howToUse: "Apply a few drops to clean, dry skin.\nGently massage into face and neck until fully absorbed.\nUse morning and evening before moisturizer.",
+
+  price: 420,
+  oldPrice: 480,
+  category: "skincare",
+  badge: "✨ Glow Boost",
+  img: "COMING.png",
+  bestseller: false
+},
+{
+  id: 6,
+  name: "KAIBE Sunscreen SPF 50",
+  desc: "KAIBE Sunscreen SPF 50\nDaily broad-spectrum sunscreen that protects against UVA & UVB rays.\nLightweight, non-greasy formula suitable for all skin types.\nHelps prevent sun damage and premature aging.",
+
+  benefits: "The KAIBE Sunscreen provides advanced daily protection.\n• Protects against harmful UV rays\n• Prevents sun damage and dark spots\n• Lightweight, non-greasy finish\n• Suitable for all skin types\n• Helps maintain even skin tone\nWith daily use, skin stays protected, healthy, and youthful.",
+
+  howToUse: "Apply generously to face and neck 15 minutes before sun exposure.\nReapply every 2 hours or after sweating or washing.",
+
+  price: 350,
+  oldPrice: null,
+  category: "skincare",
+  badge: "☀️ Daily Essential",
+  img: "COMING.png",
+  bestseller: true
+},
+{
+  id: 7,
+  name: "KAIBE Body Lotion",
+  desc: "KAIBE Nourishing Body Lotion\nRich body lotion designed to deeply moisturize and soften the skin.\nInfused with Shea Butter and Coconut Oil for long-lasting hydration.\nLeaves skin smooth, soft, and refreshed.",
+
+  benefits: "The KAIBE Body Lotion provides deep nourishment and care.\n• Intensely moisturizes dry skin\n• Improves skin softness and elasticity\n• Restores smooth texture\n• Lightweight and fast-absorbing\n• Leaves skin feeling refreshed and hydrated\nWith daily use, skin becomes silky, smooth, and healthy.",
+
+  howToUse: "Apply a generous amount to clean, dry skin.\nMassage gently until fully absorbed.\nUse daily for best results.",
+
+  price: 300,
+  oldPrice: 360,
+  category: "body",
+  badge: "💧 Deep Moisture",
+  img: "COMING.png",
+  bestseller: false
+},
+{
+  id: 8,
+  name: "KAIBE Hair Growth Oil",
+  desc: "KAIBE Hair Growth Oil\nNourishing oil blend designed to strengthen hair and promote healthy growth.\nInfused with natural oils to reduce hair fall and improve scalp health.\nIdeal for weak, thinning, or damaged hair.",
+
+  benefits: "The KAIBE Hair Growth Oil supports stronger, healthier hair.\n• Promotes healthy hair growth\n• Strengthens roots and reduces hair fall\n• Nourishes scalp and improves circulation\n• Adds shine and smoothness\n• Helps repair damaged hair\nWith regular use, hair becomes thicker, stronger, and more vibrant.",
+
+  howToUse: "Apply a small amount to scalp and hair.\nMassage gently for a few minutes.\nLeave for at least 1 hour or overnight, then wash.\nUse 2–3 times per week.",
+
+  price: 390,
+  oldPrice: 450,
+  category: "haircare",
+  badge: "🌿 Natural Care",
+  img: "COMING.png",
+  bestseller: true
+}
 ];
 
 // ==================== المتغيرات العامة ====================
