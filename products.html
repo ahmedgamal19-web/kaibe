@@ -93,11 +93,22 @@
         <div class="product-grid" id="productGrid"></div>
         
         <!-- Pagination (اختياري، يمكن إخفاؤه أو تعديله) -->
-        <div class="pagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 40px;">
-          <button class="pagination-btn active">1</button>
-          <button class="pagination-btn">2</button>
-          <button class="pagination-btn">3</button>
-          <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+        <!-- شريط التحكم بعدد المنتجات والصفحات -->
+        <div class="pagination-controls">
+          <div class="products-per-page">
+            <label for="productsPerPage">Show:</label>
+            <select id="productsPerPage">
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="8" selected>8</option>
+              <option value="12">12</option>
+              <option value="24">24</option>
+              <option value="0">All</option>
+            </select>
+          </div>
+          <div class="pagination" id="pagination">
+            <!-- الأزرار ستضاف ديناميكياً -->
+          </div>
         </div>
       </div>
     </section>
