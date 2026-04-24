@@ -15,6 +15,37 @@
 </head>
 <body>
 
+    <!-- ===== شريط العرض الترويجي مع عداد تنازلي ===== -->
+  <div class="flash-sale-bar" id="flashSaleBar">
+    <div class="container flash-sale-container">
+      <div class="flash-sale-content">
+        <span class="flash-icon">⚡</span>
+        <span class="flash-text">Flash Sale: Save <strong>15%</strong> on all bundles</span>
+        <span class="flash-divider">|</span>
+        <span class="flash-code">Code: <strong>GLOW15</strong></span>
+      </div>
+      <div class="flash-countdown" id="flashCountdown">
+        <div class="countdown-item">
+          <span class="countdown-value" id="countdownHours">02</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-item">
+          <span class="countdown-value" id="countdownMinutes">14</span>
+          <span class="countdown-label">Mins</span>
+        </div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-item">
+          <span class="countdown-value" id="countdownSeconds">36</span>
+          <span class="countdown-label">Secs</span>
+        </div>
+      </div>
+      <button class="flash-close" onclick="document.getElementById('flashSaleBar').style.display='none'" aria-label="Close promo">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
   <!-- ===== شريط الإعلان الدوار ===== -->
   <div class="announcement-bar">
     <div class="announcement-slider">
