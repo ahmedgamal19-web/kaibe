@@ -14,7 +14,7 @@ const products = [
     price: 349,
     oldPrice: 399,
     category: "haircare",
-    badge: "✨ Glow Boost",
+    badge: "New",
     img: "Shampoo.png",
     bestseller: true
 },
@@ -40,7 +40,7 @@ const products = [
     price: 349,
     oldPrice: 399,
     category: "haircare",
-    badge: "Top Rated",
+    badge: "Trending",
     img: "condetioner.png",
     bestseller: true
 },
@@ -66,7 +66,7 @@ const products = [
     price: 420,
     oldPrice: 480,
     category: "skincare",
-    badge: "✨ Glow Boost",
+    badge: "Launching soon",
     img: "COMING.png",
     bestseller: false
 },
@@ -79,7 +79,7 @@ const products = [
     price: 350,
     oldPrice: null,
     category: "skincare",
-    badge: "☀️ Daily Essential",
+    badge: "Launching soon",
     img: "COMING.png",
     bestseller: false
 },
@@ -92,7 +92,7 @@ const products = [
     price: 300,
     oldPrice: 360,
     category: "body",
-    badge: "💧 Deep Moisture",
+    badge: "Launching soon",
     img: "COMING.png",
     bestseller: false
 },
@@ -105,7 +105,7 @@ const products = [
     price: 390,
     oldPrice: 450,
     category: "haircare",
-    badge: "🌿 Natural Care",
+    badge: "Launching soon",
     img: "COMING.png",
     bestseller: false
 }
