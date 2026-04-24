@@ -285,6 +285,23 @@ function initProductDetailPage() {
   }
 
   document.getElementById('detailDesc').textContent = product.desc;
+  document.getElementById('detailBenefits').innerHTML = product.benefits.replace(/\n/g, '<br>');
+  document.getElementById('detailHowToUse').innerHTML = product.howToUse.replace(/\n/g, '<br>');
+
+    
+   document.querySelectorAll('.tab-btn').forEach(btn => {
+     btn.addEventListener('click', () => {
+       // إزالة active من كل الأزرار والمحتويات
+       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+       // تفعيل التبويب المختار
+       btn.classList.add('active');
+       const tabId = btn.dataset.tab;
+       if (tabId === 'description') document.getElementById('tabDescription').classList.add('active');
+       else if (tabId === 'benefits') document.getElementById('tabBenefits').classList.add('active');
+       else if (tabId === 'howToUse') document.getElementById('tabHowToUse').classList.add('active');
+     });
+   });
 
   const badgeEl = document.getElementById('detailBadge');
   if (product.badge) {
