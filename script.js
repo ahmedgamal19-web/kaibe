@@ -60,55 +60,31 @@ const products = [
 {
     id: 5,
     name: "KAIBE Hydrating Serum",
-    desc: "KAIBE Hydrating Serum\nLightweight serum designed to deeply hydrate and plump the skin.\nInfused with Hyaluronic Acid and Vitamin B5 to lock in moisture and improve skin texture.\nPerfect for daily use for a smooth, radiant glow.",
-    benefits: "The KAIBE Hydrating Serum delivers intense hydration and skin renewal.\n• Deeply hydrates and locks in moisture\n• Plumps and smooths fine lines\n• Improves skin texture and softness\n• Enhances natural glow and radiance\n• Lightweight and fast-absorbing formula\nWith regular use, skin becomes smoother, fresher, and visibly healthier.",
-    howToUse: "Apply a few drops to clean, dry skin.\nGently massage into face and neck until fully absorbed.\nUse morning and evening before moisturizer.",
-    price: 420,
-    oldPrice: 480,
-    category: "skincare",
+    desc: "launching soon",
+    benefits: "launching soon",
+    howToUse: "launching soon",
+    price: null,
+    oldPrice: null,
+    category: "haircare",
     badge: "Launching soon",
     img: "COMING.png",
     bestseller: false
 },
 {
     id: 6,
-    name: "KAIBE Sunscreen SPF 50",
-    desc: "KAIBE Sunscreen SPF 50\nDaily broad-spectrum sunscreen that protects against UVA & UVB rays.\nLightweight, non-greasy formula suitable for all skin types.\nHelps prevent sun damage and premature aging.",
-    benefits: "The KAIBE Sunscreen provides advanced daily protection.\n• Protects against harmful UV rays\n• Prevents sun damage and dark spots\n• Lightweight, non-greasy finish\n• Suitable for all skin types\n• Helps maintain even skin tone\nWith daily use, skin stays protected, healthy, and youthful.",
-    howToUse: "Apply generously to face and neck 15 minutes before sun exposure.\nReapply every 2 hours or after sweating or washing.",
-    price: 350,
+    name: "Shower gel",
+    desc: "launching soon",
+    benefits: "launching soon",
+    howToUse: "launching soon",
+    price: null,
     oldPrice: null,
     category: "skincare",
     badge: "Launching soon",
     img: "COMING.png",
     bestseller: false
 },
-{
-    id: 7,
-    name: "KAIBE Body Lotion",
-    desc: "KAIBE Nourishing Body Lotion\nRich body lotion designed to deeply moisturize and soften the skin.\nInfused with Shea Butter and Coconut Oil for long-lasting hydration.\nLeaves skin smooth, soft, and refreshed.",
-    benefits: "The KAIBE Body Lotion provides deep nourishment and care.\n• Intensely moisturizes dry skin\n• Improves skin softness and elasticity\n• Restores smooth texture\n• Lightweight and fast-absorbing\n• Leaves skin feeling refreshed and hydrated\nWith daily use, skin becomes silky, smooth, and healthy.",
-    howToUse: "Apply a generous amount to clean, dry skin.\nMassage gently until fully absorbed.\nUse daily for best results.",
-    price: 300,
-    oldPrice: 360,
-    category: "body",
-    badge: "Launching soon",
-    img: "COMING.png",
-    bestseller: false
-},
-{
-    id: 8,
-    name: "KAIBE Hair Growth Oil",
-    desc: "KAIBE Hair Growth Oil\nNourishing oil blend designed to strengthen hair and promote healthy growth.\nInfused with natural oils to reduce hair fall and improve scalp health.\nIdeal for weak, thinning, or damaged hair.",
-    benefits: "The KAIBE Hair Growth Oil supports stronger, healthier hair.\n• Promotes healthy hair growth\n• Strengthens roots and reduces hair fall\n• Nourishes scalp and improves circulation\n• Adds shine and smoothness\n• Helps repair damaged hair\nWith regular use, hair becomes thicker, stronger, and more vibrant.",
-    howToUse: "Apply a small amount to scalp and hair.\nMassage gently for a few minutes.\nLeave for at least 1 hour or overnight, then wash.\nUse 2–3 times per week.",
-    price: 390,
-    oldPrice: 450,
-    category: "haircare",
-    badge: "Launching soon",
-    img: "COMING.png",
-    bestseller: false
-}
+
+
 ];
 
 // ==================== المتغيرات العامة ====================
