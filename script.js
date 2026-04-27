@@ -688,6 +688,299 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// ==================== نظام الوضع الليلي ====================
+function initDarkMode() {
+  const themeToggle = document.getElementById('themeToggle');
+  if (!themeToggle) return;
+
+  // استعادة الإعداد المخزن
+  const savedTheme = localStorage.getItem('kaibe_theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.querySelector('i').className = 'fas fa-sun';
+    themeToggle.setAttribute('data-tooltip', 'Light Mode');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    
+    // تحديث الأيقونة
+    const icon = themeToggle.querySelector('i');
+    if (isDark) {
+      icon.className = 'fas fa-sun';
+      themeToggle.setAttribute('data-tooltip', 'Light Mode');
+    } else {
+      icon.className = 'fas fa-moon';
+      themeToggle.setAttribute('data-tooltip', 'Dark Mode');
+    }
+    
+    // حفظ الإعداد
+    localStorage.setItem('kaibe_theme', isDark ? 'dark' : 'light');
+  });
+}
+
+// ==================== نظام تغيير اللغة ====================
+const translations = {
+  en: {
+    // Header & Navigation
+    home: 'Home',
+    products: 'Products',
+    policies: 'Policies',
+    contact: 'Contact',
+    search: 'Search for products...',
+    
+    // Hero
+    heroSubtitle: '— Naturally radiant',
+    heroTitle: 'Reveal Your Inner Glow',
+    heroDesc: 'Premium skincare & hair care crafted with botanicals. Gentle, effective, and cruelty‑free.',
+    shopCollection: 'Shop Collection',
+    learnMore: 'Learn More',
+    
+    // Trust Badges
+    freeShipping: 'Free Shipping',
+    easyReturns: 'Easy Returns',
+    natural: '100% Natural',
+    secureCheckout: 'Secure Checkout',
+    
+    // Products
+    bestsellers: 'Our Bestsellers',
+    bestsellersSub: 'Formulated for every skin & hair type',
+    allProducts: 'All Products',
+    viewAll: 'View All Products',
+    sortFeatured: 'Sort by: Featured',
+    sortPriceLow: 'Price: Low to High',
+    sortPriceHigh: 'Price: High to Low',
+    show: 'Show:',
+    all: 'All',
+    skincare: 'Skincare',
+    haircare: 'Hair Care',
+    body: 'Body',
+    sets: 'Sets',
+    
+    // Community
+    styledByYou: 'Styled by You',
+    styledSub: 'Join the thousands glowing with Kaibe',
+    followInsta: 'Follow us on Instagram',
+    
+    // Policies Preview
+    freeShippingTitle: 'Free Shipping',
+    freeShippingDesc: 'On orders over 750 L.E',
+    easyReturnsTitle: 'Easy Returns',
+    easyReturnsDesc: '30‑day guarantee',
+    crueltyFreeTitle: 'Cruelty‑Free',
+    crueltyFreeDesc: 'Never tested on animals',
+    securePaymentTitle: 'Secure Payment',
+    securePaymentDesc: 'Encrypted transactions',
+    
+    // Product Detail
+    description: 'Description',
+    benefits: 'Benefits',
+    howToUse: 'How to Use',
+    addToCart: 'Add to Cart',
+    orderWhatsApp: 'Order via WhatsApp',
+    quantity: 'Quantity:',
+    relatedTitle: 'You may also like',
+    verified: 'Verified Purchase',
+    
+    // Cart
+    yourCart: 'Your Cart',
+    emptyCart: 'Your cart is empty',
+    total: 'Total:',
+    checkoutWhatsApp: 'Checkout via WhatsApp',
+    
+    // Reviews
+    customerReviews: 'Customer Reviews',
+    outOf5: 'out of 5',
+    basedOn: 'Based on',
+    reviews: 'reviews',
+    writeReview: 'Write a Review',
+    loadMore: 'Load More Reviews',
+    
+    // Footer
+    footerDesc: 'Clean beauty for radiant skin & healthy hair.',
+    quickLinks: 'Quick Links',
+    shop: 'Shop',
+    newsletter: 'Newsletter',
+    newsletterSub: 'Subscribe for exclusive offers.',
+    yourEmail: 'Your email',
+    copyright: '© 2025 kaibe. All rights reserved.',
+    
+    // Flash Sale
+    flashText: 'Flash Sale: Save 15% on all bundles',
+    flashCode: 'Code: GLOW15',
+    
+    // WhatsApp
+    orderWhatsAppFloat: 'Order via WhatsApp',
+    
+    // Misc
+    addConfirm: 'added to cart!',
+    thanksSubscribe: 'Thanks for subscribing',
+    messageSent: 'Your message has been sent! We will reply within 24 hours.',
+  },
+  
+  ar: {
+    // Header & Navigation
+    home: 'الرئيسية',
+    products: 'المنتجات',
+    policies: 'السياسات',
+    contact: 'اتصل بنا',
+    search: 'ابحث عن المنتجات...',
+    
+    // Hero
+    heroSubtitle: '— إشراقة طبيعية',
+    heroTitle: 'أطلقي جمالك الداخلي',
+    heroDesc: 'منتجات عناية بالبشرة والشعر مصنوعة من مكونات نباتية. لطيفة، فعالة، وخالية من التجارب على الحيوانات.',
+    shopCollection: 'تسوقي الآن',
+    learnMore: 'اعرفي المزيد',
+    
+    // Trust Badges
+    freeShipping: 'توصيل مجاني',
+    easyReturns: 'إرجاع سهل',
+    natural: 'طبيعي 100%',
+    secureCheckout: 'دفع آمن',
+    
+    // Products
+    bestsellers: 'الأكثر مبيعاً',
+    bestsellersSub: 'مصنوعة لكل أنواع البشرة والشعر',
+    allProducts: 'جميع المنتجات',
+    viewAll: 'عرض الكل',
+    sortFeatured: 'ترتيب حسب: المميز',
+    sortPriceLow: 'السعر: من الأقل للأعلى',
+    sortPriceHigh: 'السعر: من الأعلى للأقل',
+    show: 'عرض:',
+    all: 'الكل',
+    skincare: 'عناية بالبشرة',
+    haircare: 'عناية بالشعر',
+    body: 'جسم',
+    sets: 'مجموعات',
+    
+    // Community
+    styledByYou: 'بأسلوبك أنتِ',
+    styledSub: 'انضمي للآلاف المتألقين مع Kaibe',
+    followInsta: 'تابعينا على انستجرام',
+    
+    // Policies Preview
+    freeShippingTitle: 'توصيل مجاني',
+    freeShippingDesc: 'للطلبات فوق 750 ج.م',
+    easyReturnsTitle: 'إرجاع سهل',
+    easyReturnsDesc: 'ضمان ٣٠ يوم',
+    crueltyFreeTitle: 'خالٍ من التجارب',
+    crueltyFreeDesc: 'لم يتم اختباره على الحيوانات',
+    securePaymentTitle: 'دفع آمن',
+    securePaymentDesc: 'معاملات مشفرة',
+    
+    // Product Detail
+    description: 'الوصف',
+    benefits: 'الفوائد',
+    howToUse: 'طريقة الاستخدام',
+    addToCart: 'أضف إلى السلة',
+    orderWhatsApp: 'اطلب عبر واتساب',
+    quantity: 'الكمية:',
+    relatedTitle: 'قد يعجبك أيضاً',
+    verified: 'عملية شراء مؤكدة',
+    
+    // Cart
+    yourCart: 'سلة التسوق',
+    emptyCart: 'السلة فارغة',
+    total: 'الإجمالي:',
+    checkoutWhatsApp: 'الدفع عبر واتساب',
+    
+    // Reviews
+    customerReviews: 'آراء العملاء',
+    outOf5: 'من 5',
+    basedOn: 'بناءً على',
+    reviews: 'تقييم',
+    writeReview: 'اكتبي تقييماً',
+    loadMore: 'تحميل المزيد',
+    
+    // Footer
+    footerDesc: 'جمال نظيف لبشرة مشرقة وشعر صحي.',
+    quickLinks: 'روابط سريعة',
+    shop: 'المتجر',
+    newsletter: 'النشرة البريدية',
+    newsletterSub: 'اشتركي للحصول على عروض حصرية.',
+    yourEmail: 'بريدك الإلكتروني',
+    copyright: '© 2025 kaibe. جميع الحقوق محفوظة.',
+    
+    // Flash Sale
+    flashText: 'عرض خاطف: وفر 15% على جميع الباقات',
+    flashCode: 'الكود: GLOW15',
+    
+    // WhatsApp
+    orderWhatsAppFloat: 'اطلب عبر واتساب',
+    
+    // Misc
+    addConfirm: 'تمت الإضافة إلى السلة!',
+    thanksSubscribe: 'شكراً لاشتراكك',
+    messageSent: 'تم إرسال رسالتك! سنرد خلال 24 ساعة.',
+  }
+};
+
+let currentLang = localStorage.getItem('kaibe_lang') || 'en';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('kaibe_lang', lang);
+  
+  const t = translations[lang];
+  
+  // تحديث اتجاه الصفحة
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+  
+  // تحديث النصوص في الصفحة
+  updateTextBySelector('[data-i18n]', t);
+  updatePlaceholders(t);
+  
+  // تحديث زر اللغة
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    const span = langToggle.querySelector('span');
+    if (lang === 'ar') {
+      span.textContent = 'EN';
+      langToggle.setAttribute('data-tooltip', 'English');
+    } else {
+      span.textContent = 'AR';
+      langToggle.setAttribute('data-tooltip', 'العربية');
+    }
+  }
+}
+
+function updateTextBySelector(selector, t) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+}
+
+function updatePlaceholders(t) {
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput && t.search) searchInput.placeholder = t.search;
+  
+  const newsletterInput = document.querySelector('.newsletter-form input');
+  if (newsletterInput && t.yourEmail) newsletterInput.placeholder = t.yourEmail;
+}
+
+function initLanguageSwitch() {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+
+  // تطبيق اللغة المحفوظة
+  applyLanguage(currentLang);
+
+  langToggle.addEventListener('click', () => {
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+    applyLanguage(newLang);
+  });
+}
+
 // ==================== تصدير للاستخدام العام ====================
 window.kaibe = {
   renderProducts,
