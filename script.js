@@ -662,7 +662,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsletter();
   initContactForm();
   updateCartUI();
-
+  initDarkMode();
+  initLanguageSwitch();
   // تحميل الصفحة المناسبة
   if (document.getElementById('productGrid')) {
     // الصفحات التي تحتوي على شبكة منتجات (index, products)
