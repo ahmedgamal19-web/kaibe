@@ -655,6 +655,72 @@ function initFlashCountdown() {
   setInterval(updateCountdown, 1000);
 }
 
+
+// ==================== الترجمة التلقائية من Google ====================
+function initAutoTranslate() {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+
+  // إخفاء أداة Google Translate الرسمية
+  const translateElement = document.getElementById('google_translate_element');
+  if (translateElement) translateElement.style.display = 'none';
+
+  // استعادة اللغة المحفوظة
+  const savedLang = localStorage.getItem('kaibe_lang') || 'en';
+  applyGoogleTranslate(savedLang);
+
+  langToggle.addEventListener('click', () => {
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+    applyGoogleTranslate(newLang);
+    localStorage.setItem('kaibe_lang', newLang);
+  });
+}
+
+function applyGoogleTranslate(lang) {
+  currentLang = lang;
+  
+  // تحديث اتجاه الصفحة
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+  
+  // تغيير اللغة عبر Google Translate
+  const iframe = document.querySelector('.goog-te-menu-frame');
+  if (lang === 'ar') {
+    // محاكاة اختيار العربية من القائمة
+    changeGoogleTranslateLanguage('ar');
+  } else {
+    // العودة للإنجليزية
+    changeGoogleTranslateLanguage('en');
+  }
+  
+  updateLangButton(lang);
+}
+
+function changeGoogleTranslateLanguage(lang) {
+  const select = document.querySelector('.goog-te-combo');
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event('change'));
+  } else {
+    // إذا لم تظهر الأداة بعد، استخدم cookie
+    setCookie('googtrans', `/en/${lang}`, 1);
+    window.location.reload();
+  }
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+}
+
 // ==================== التهيئة العامة ====================
 document.addEventListener('DOMContentLoaded', () => {
   // تهيئة المكونات المشتركة
@@ -666,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   updateCartUI();
   initDarkMode();
-  initLanguageSwitch();
+  initAutoTranslate();
   // تحميل الصفحة المناسبة
   if (document.getElementById('productGrid')) {
     // الصفحات التي تحتوي على شبكة منتجات (index, products)
