@@ -97,8 +97,7 @@ let currentSort = 'featured';
 let currentPage = 1;
 let productsPerPage = 8; // القيمة الافتراضية
 let totalPages = 1;
-// ✅ أضف هذا السطر
-let currentLang = localStorage.getItem('kaibe_lang') || 'en';
+
 
 
 // ==================== دوال عامة ====================
@@ -658,7 +657,44 @@ function initFlashCountdown() {
   setInterval(updateCountdown, 1000);
 }
 
+// ==================== Google Translate ====================
+let currentLang = localStorage.getItem('kaibe_lang') || 'en';
 
+function initGoogleTranslate() {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+
+  updateButtonText(currentLang);
+
+  // فقط إذا كانت اللغة المحفوظة عربي، نطبق الاتجاه
+  if (currentLang === 'ar') {
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
+  }
+
+  langToggle.addEventListener('click', () => {
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+    localStorage.setItem('kaibe_lang', newLang);
+    document.cookie = `googtrans=/en/${newLang};path=/`;
+    window.location.reload();
+  });
+}
+
+function updateButtonText(lang) {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+  
+  const span = langToggle.querySelector('span');
+  if (lang === 'ar') {
+    span.textContent = 'EN';
+    langToggle.setAttribute('data-tooltip', 'English');
+  } else {
+    span.textContent = 'AR';
+    langToggle.setAttribute('data-tooltip', 'العربية');
+  }
+}
+
+// ==================== التهيئة العامة ====================
 
 
 
