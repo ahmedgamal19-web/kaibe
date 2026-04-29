@@ -721,6 +721,95 @@ function setCookie(name, value, days) {
   document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
 }
 
+// ==================== Google Translate - بدون ريفرش ====================
+let currentLang = localStorage.getItem('kaibe_lang') || 'en';
+let googleTranslateReady = false;
+
+// انتظار تحميل Google Translate
+window.googleTranslateElementInit = function() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'ar,en',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+  
+  // بعد تحميل الأداة، طبق اللغة المحفوظة
+  setTimeout(() => {
+    googleTranslateReady = true;
+    applySavedLanguage();
+  }, 1000);
+};
+
+function applySavedLanguage() {
+  const savedLang = localStorage.getItem('kaibe_lang') || 'en';
+  if (savedLang === 'ar') {
+    translateTo('ar');
+    updateDirection('ar');
+    updateButtonText('ar');
+  }
+}
+
+function initGoogleTranslate() {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+
+  updateButtonText(currentLang);
+
+  langToggle.addEventListener('click', () => {
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+    
+    if (newLang === 'ar') {
+      translateTo('ar');
+      updateDirection('ar');
+    } else {
+      translateTo('en');
+      updateDirection('en');
+    }
+    
+    currentLang = newLang;
+    localStorage.setItem('kaibe_lang', newLang);
+    updateButtonText(newLang);
+  });
+}
+
+function translateTo(lang) {
+  const select = document.querySelector('.goog-te-combo');
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event('change'));
+  } else {
+    // إذا لم تظهر الأداة بعد
+    setCookie('googtrans', `/en/${lang}`, 1);
+    // لا نعيد التحميل - سيتم التطبيق تلقائياً
+  }
+}
+
+function updateDirection(lang) {
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+}
+
+function updateButtonText(lang) {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+  
+  const span = langToggle.querySelector('span');
+  if (lang === 'ar') {
+    span.textContent = 'EN';
+    langToggle.setAttribute('data-tooltip', 'English');
+  } else {
+    span.textContent = 'AR';
+    langToggle.setAttribute('data-tooltip', 'العربية');
+  }
+}
+
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+}
+
 // ==================== التهيئة العامة ====================
 document.addEventListener('DOMContentLoaded', () => {
   // تهيئة المكونات المشتركة
