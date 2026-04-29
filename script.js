@@ -174,6 +174,9 @@ function renderProducts(filter = currentFilter, sort = currentSort, page = curre
     paginatedProducts = filtered.slice(start, end);
   }
 
+  // 🟢 تحديد اللغة الحالية
+  const isArabic = currentLang === 'ar';
+
   // توليد HTML الشبكة
   grid.innerHTML = paginatedProducts.map(p => `
     <div class="product-card" data-category="${p.category}" data-id="${p.id}" onclick="location.href='product.html?id=${p.id}'" style="cursor: pointer;">
@@ -184,7 +187,8 @@ function renderProducts(filter = currentFilter, sort = currentSort, page = curre
       </div>
       <div class="product-info">
         <h3 class="product-name">${p.name}</h3>
-        <p class="product-desc">${p.desc.substring(0, 35)}...</p>
+        <!-- 🟢 الوصف يظهر حسب اللغة -->
+        <p class="product-desc">${isArabic && p.descAr ? p.descAr.substring(0, 35) : p.desc.substring(0, 35)}...</p>
         <div class="product-footer">
           <div class="price-wrapper">
             <span class="current-price">${p.price} L.E</span>
@@ -203,7 +207,6 @@ function renderProducts(filter = currentFilter, sort = currentSort, page = curre
     renderPaginationButtons(filtered.length);
   }
 }
-
 
 // ==================== عرض أزرار Pagination ====================
 function renderPaginationButtons(totalProducts) {
