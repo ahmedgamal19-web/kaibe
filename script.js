@@ -400,7 +400,7 @@ function initProductDetailPage() {
     const qty = parseInt(qtyInput.value);
     const total = product.price * qty;
     let msg = `🛍️ *Order from kaibe*%0A%0A*Product:* ${product.name}%0A*Quantity:* ${qty}%0A*Total:* ${total} L.E%0A%0APlease confirm.`;
-    window.open(`https://wa.me/201204818221?text=${msg}`, '_blank');
+    window.open(`https://wa.me/201113651350?text=${msg}`, '_blank');
   });
 
   // منتجات ذات صلة
@@ -538,7 +538,7 @@ function initCartSidebar() {
       });
       const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
       message += `%0A*Total: ${total} L.E*`;
-      window.open(`https://wa.me/201204818221?text=${message}`, '_blank');
+      window.open(`https://wa.me/201113651350?text=${message}`, '_blank');
     });
   }
 }
