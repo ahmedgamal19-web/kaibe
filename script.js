@@ -679,24 +679,36 @@ function initGoogleTranslate() {
   const langToggle = document.getElementById('langToggle');
   if (!langToggle) return;
 
+  // عرض الزر بالشكل الصحيح
   updateButtonText(currentLang);
 
   langToggle.addEventListener('click', () => {
     const newLang = currentLang === 'en' ? 'ar' : 'en';
     
-    if (newLang === 'ar') {
-      translateTo('ar');
-      updateDirection('ar');
-    } else {
-      translateTo('en');
-      updateDirection('en');
-    }
-    
-    currentLang = newLang;
+    // حفظ اللغة الجديدة
     localStorage.setItem('kaibe_lang', newLang);
-    updateButtonText(newLang);
+    
+    // تعيين كوكي Google Translate
+    document.cookie = `googtrans=/en/${newLang};path=/`;
+    
+    // إعادة التحميل مرة واحدة فقط
+    window.location.reload();
   });
 }
+
+function updateButtonText(lang) {
+  const langToggle = document.getElementById('langToggle');
+  if (!langToggle) return;
+  
+  const span = langToggle.querySelector('span');
+  if (lang === 'ar') {
+    span.textContent = 'EN';
+    langToggle.setAttribute('data-tooltip', 'English');
+  } else {
+    span.textContent = 'AR';
+    langToggle.setAttribute('data-tooltip', 'العربية');
+  }
+}}
 
 function translateTo(lang) {
   const select = document.querySelector('.goog-te-combo');
