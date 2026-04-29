@@ -2355,3 +2355,12 @@ body.dark-mode .footer {
     font-size: 0.6rem;
   }
 }
+
+.goog-te-banner-frame,
+.goog-te-gadget,
+.goog-te-gadget-simple {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
