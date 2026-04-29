@@ -2356,37 +2356,34 @@ body.dark-mode .footer {
   }
 }
 
-.goog-te-banner-frame,
-.goog-te-gadget,
-.goog-te-gadget-simple {
-  display: none !important;
-}
+/* ===== إخفاء عناصر Google Translate غير المرغوبة ===== */
+/* منع إزاحة body */
 body {
   top: 0 !important;
 }
 
-/* إخفاء شريط Google Translate */
-.goog-te-banner-frame.skiptranslate,
-.goog-te-gadget,
+/* إخفاء الشريط العلوي لـ Google Translate */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* إخفاء الأداة العائمة */
 .goog-te-gadget-simple,
 .goog-te-gadget img,
 .goog-te-gadget span,
 #goog-gt-tt,
 .goog-tooltip,
-.goog-tooltip:hover {
+.goog-tooltip:hover,
+.goog-te-menu-frame,
+.goog-te-menu-value,
+.goog-te-gadget {
   display: none !important;
 }
 
-body {
-  top: 0 !important;
-  position: static !important;
-}
-
-/* إخفاء القائمة المنسدلة للترجمة */
-.goog-te-menu-frame {
-  display: none !important;
-}
-
+/* إخفاء عنصر الترجمة المخفي */
 #google_translate_element {
   display: none !important;
 }
