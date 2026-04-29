@@ -732,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   updateCartUI();
   initDarkMode();
-  initAutoTranslate();
+  initGoogleTranslate();
   // تحميل الصفحة المناسبة
   if (document.getElementById('productGrid')) {
     // الصفحات التي تحتوي على شبكة منتجات (index, products)
@@ -986,74 +986,23 @@ const translations = {
     messageSent: 'تم إرسال رسالتك! سنرد خلال 24 ساعة.',
   }
 };
-
+// ==================== Google Translate Automatic ====================
 let currentLang = localStorage.getItem('kaibe_lang') || 'en';
 
-function applyLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('kaibe_lang', lang);
-  
-  const t = translations[lang];
-  
-  // تحديث اتجاه الصفحة
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  document.documentElement.lang = lang;
-  
-  // تحديث النصوص في الصفحة
-  updateTextBySelector('[data-i18n]', t);
-  updatePlaceholders(t);
-  
-  // تحديث زر اللغة
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    const span = langToggle.querySelector('span');
-    if (lang === 'ar') {
-      span.textContent = 'EN';
-      langToggle.setAttribute('data-tooltip', 'English');
-    } else {
-      span.textContent = 'AR';
-      langToggle.setAttribute('data-tooltip', 'العربية');
-    }
-  }
-}
-
-function updateTextBySelector(selector, t) {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = t[key];
-      } else {
-        el.textContent = t[key];
-      }
-    }
-  });
-}
-
-function updatePlaceholders(t) {
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput && t.search) searchInput.placeholder = t.search;
-  
-  const newsletterInput = document.querySelector('.newsletter-form input');
-  if (newsletterInput && t.yourEmail) newsletterInput.placeholder = t.yourEmail;
-}
-
-// ==================== نظام تغيير اللغة (محسّن) ====================
-function initLanguageSwitch() {
+function initGoogleTranslate() {
   const langToggle = document.getElementById('langToggle');
   if (!langToggle) return;
 
-  // استعادة اللغة المحفوظة
-  const savedLang = localStorage.getItem('kaibe_lang') || 'en';
-  applyLanguage(savedLang);
+  // تحديث زر اللغة
+  updateTranslateButton(currentLang);
 
   langToggle.addEventListener('click', () => {
     const newLang = currentLang === 'en' ? 'ar' : 'en';
-    applyLanguage(newLang);
+    switchLanguage(newLang);
   });
 }
 
-function applyLanguage(lang) {
+function switchLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('kaibe_lang', lang);
   
@@ -1061,154 +1010,17 @@ function applyLanguage(lang) {
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.documentElement.lang = lang;
   
-  // تحديث جميع النصوص التي تحمل data-i18n
-  updateAllTexts(lang);
-  
-  // تحديث الأماكن الخاصة (placeholder, عناصر ديناميكية)
-  updateDynamicTexts(lang);
-  
-  // تحديث المنتجات إذا كانت موجودة
-  if (document.getElementById('productGrid')) {
-    renderProducts();
-  }
+  // تغيير اللغة باستخدام Google Translate cookie
+  setCookie('googtrans', `/en/${lang}`, 1);
   
   // تحديث زر اللغة
-  updateLangButton(lang);
+  updateTranslateButton(lang);
+  
+  // إعادة تحميل الصفحة لتطبيق الترجمة
+  window.location.reload();
 }
 
-function updateAllTexts(lang) {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-}
-
-function updateDynamicTexts(lang) {
-  const t = translations[lang];
-  
-  // تحديث placeholder البحث
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput && t.search) {
-    searchInput.placeholder = t.search;
-  }
-  
-  // تحديث placeholder النشرة البريدية
-  const newsletterInput = document.querySelector('.newsletter-form input[type="email"]');
-  if (newsletterInput && t.yourEmail) {
-    newsletterInput.placeholder = t.yourEmail;
-  }
-  
-  // تحديث نص الفلاش سيل
-  const flashText = document.querySelector('.flash-text');
-  if (flashText && t.flashText) {
-    flashText.innerHTML = t.flashText;
-  }
-  
-  const flashCode = document.querySelector('.flash-code');
-  if (flashCode && t.flashCode) {
-    flashCode.innerHTML = t.flashCode;
-  }
-  
-  // تحديث select sort
-  const sortSelect = document.querySelector('.sort-select');
-  if (sortSelect && t.sortFeatured) {
-    sortSelect.options[0].text = t.sortFeatured;
-    if (sortSelect.options[1]) sortSelect.options[1].text = t.sortPriceLow;
-    if (sortSelect.options[2]) sortSelect.options[2].text = t.sortPriceHigh;
-  }
-  
-  // تحديث زر view all products
-  const viewAllBtn = document.querySelector('.view-all .btn');
-  if (viewAllBtn && t.viewAll) {
-    viewAllBtn.innerHTML = `${t.viewAll} <i class="fas fa-arrow-${lang === 'ar' ? 'left' : 'right'}"></i>`;
-  }
-  
-  // تحديث نص السلة الفارغة
-  const emptyCart = document.querySelector('.empty-cart');
-  if (emptyCart && t.emptyCart) {
-    emptyCart.textContent = t.emptyCart;
-  }
-  
-  // تحديث عنوان السلة
-  const cartTitle = document.querySelector('.cart-header h3');
-  if (cartTitle && t.yourCart) {
-    cartTitle.textContent = t.yourCart;
-  }
-  
-  // تحديث زر checkout في السلة
-  const checkoutBtn = document.querySelector('.cart-footer .btn-primary');
-  if (checkoutBtn && t.checkoutWhatsApp) {
-    checkoutBtn.textContent = t.checkoutWhatsApp;
-  }
-  
-  // تحديث التوتال
-  const totalLabel = document.querySelector('.cart-total');
-  if (totalLabel && t.total) {
-    const span = totalLabel.querySelector('span');
-    const totalValue = span ? span.textContent : '0 L.E';
-    totalLabel.innerHTML = `${t.total} <span>${totalValue}</span>`;
-  }
-  
-  // تحديث عنوان reviews
-  const reviewsTitle = document.querySelector('.reviews-title');
-  if (reviewsTitle && t.customerReviews) {
-    reviewsTitle.textContent = t.customerReviews;
-  }
-  
-  // تحديث زر write review
-  const writeReviewBtn = document.getElementById('writeReviewBtn');
-  if (writeReviewBtn && t.writeReview) {
-    writeReviewBtn.innerHTML = `<i class="fas fa-pen"></i> ${t.writeReview}`;
-  }
-  
-  // تحديث زر load more
-  const loadMoreBtn = document.getElementById('loadMoreReviews');
-  if (loadMoreBtn && t.loadMore) {
-    loadMoreBtn.innerHTML = `${t.loadMore} <i class="fas fa-chevron-down"></i>`;
-  }
-  
-  // تحديث التبويبات في صفحة المنتج
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    const tab = btn.getAttribute('data-tab');
-    if (tab === 'description' && t.description) btn.textContent = t.description;
-    if (tab === 'benefits' && t.benefits) btn.textContent = t.benefits;
-    if (tab === 'howToUse' && t.howToUse) btn.textContent = t.howToUse;
-  });
-  
-  // تحديث quantity label
-  const qtyLabel = document.querySelector('.quantity-selector label');
-  if (qtyLabel && t.quantity) {
-    qtyLabel.textContent = t.quantity;
-  }
-  
-  // تحديث أزرار الإجراءات
-  const addToCartBtn = document.getElementById('addToCartBtn');
-  if (addToCartBtn && t.addToCart) {
-    addToCartBtn.innerHTML = `<i class="fas fa-shopping-bag"></i> ${t.addToCart}`;
-  }
-  
-  const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
-  if (whatsappOrderBtn && t.orderWhatsApp) {
-    whatsappOrderBtn.innerHTML = `<i class="fab fa-whatsapp"></i> ${t.orderWhatsApp}`;
-  }
-  
-  // تحديث related title
-  const relatedTitle = document.querySelector('.related-title');
-  if (relatedTitle && t.relatedTitle) {
-    relatedTitle.textContent = t.relatedTitle;
-  }
-  
-  // تحديث verified purchase
-  document.querySelectorAll('.review-verified').forEach(el => {
-    if (t.verified) {
-      el.innerHTML = `<i class="fas fa-check-circle"></i> ${t.verified}`;
-    }
-  });
-}
-
-function updateLangButton(lang) {
+function updateTranslateButton(lang) {
   const langToggle = document.getElementById('langToggle');
   if (!langToggle) return;
   
@@ -1221,6 +1033,22 @@ function updateLangButton(lang) {
     langToggle.setAttribute('data-tooltip', 'العربية');
   }
 }
+
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+}
+
+// تطبيق اللغة عند التحميل مباشرة (منعاً للوميض)
+(function() {
+  const savedLang = localStorage.getItem('kaibe_lang') || 'en';
+  if (savedLang === 'ar') {
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
+    document.cookie = 'googtrans=/en/ar;path=/';
+  }
+})();
 
 // ==================== تصدير للاستخدام العام ====================
 window.kaibe = {
