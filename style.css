@@ -2364,3 +2364,25 @@ body.dark-mode .footer {
 body {
   top: 0 !important;
 }
+
+/* إخفاء شريط Google Translate */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget,
+.goog-te-gadget-simple,
+.goog-te-gadget img,
+.goog-te-gadget span,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* إخفاء القائمة المنسدلة للترجمة */
+.goog-te-menu-frame {
+  display: none !important;
+}
