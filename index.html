@@ -124,23 +124,23 @@
     </section>
 
     <!-- ===== قسم مميزات الثقة ===== -->
-    <section class="trust-badges">
-      <div class="container">
-        <div class="badges-grid">
-          <div class="badge-item"><i class="fas fa-truck"></i> Free Shipping</div>
-          <div class="badge-item"><i class="fas fa-undo-alt"></i> Easy Returns</div>
-          <div class="badge-item"><i class="fas fa-leaf"></i> 100% Natural</div>
-          <div class="badge-item"><i class="fas fa-lock"></i> Secure Checkout</div>
-        </div>
+   <section class="trust-badges">
+    <div class="container">
+      <div class="badges-grid">
+        <div class="badge-item" data-i18n="freeShipping"><i class="fas fa-truck"></i> Free Shipping</div>
+        <div class="badge-item" data-i18n="easyReturns"><i class="fas fa-undo-alt"></i> Easy Returns</div>
+        <div class="badge-item" data-i18n="natural"><i class="fas fa-leaf"></i> 100% Natural</div>
+        <div class="badge-item" data-i18n="secureCheckout"><i class="fas fa-lock"></i> Secure Checkout</div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Featured Products -->
     <section class="products">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Our Bestsellers</h2>
-          <p class="section-subtitle">Formulated for every skin & hair type</p>
+          <h2 class="section-title" data-i18n="bestsellers">Our Bestsellers</h2>
+          <p class="section-subtitle" data-i18n="bestsellersSub">Formulated for every skin & hair type</p>
         </div>
        
         <!-- شبكة المنتجات (تولّد ديناميكياً عبر JavaScript) -->
@@ -148,7 +148,7 @@
           <!-- المنتجات سيتم توليدها من data-products في main.js، لكن نتركها فارغة أو نضيف static fallback -->
         </div>
         <div class="view-all">
-          <a href="products.html" class="btn btn-secondary">View All Products <i class="fas fa-arrow-right"></i></a>
+          <a href="products.html" class="btn btn-secondary" data-i18n="viewAll">View All Products <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </section>
@@ -157,9 +157,11 @@
     <section class="community">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Styled by You</h2>
-          <p class="section-subtitle">Join the thousands glowing with Kaibe</p>
+          <h2 class="section-title" data-i18n="styledByYou">Styled by You</h2>
+          <p class="section-subtitle" data-i18n="styledSub">Join the thousands glowing with Kaibe</p>
         </div>
+...
+        <a href="https://www.instagram.com/kaibe_daily?igsh=bnJuZ3VyZGloMWM1" class="btn btn-secondary" data-i18n="followInsta">Follow us on Instagram <i class="fab fa-instagram"></i></a>
         <div class="community-grid two-items">
           <div class="model-card">
             <div class="model-img">
@@ -190,26 +192,26 @@
     <section class="policies">
       <div class="container">
         <div class="policy-grid">
-          <div class="policy-card">
-            <div class="policy-icon"><i class="fas fa-truck"></i></div>
-            <h4>Free Shipping</h4>
-            <p>On orders over 750 L.E</p>
-          </div>
-          <div class="policy-card">
-            <div class="policy-icon"><i class="fas fa-undo-alt"></i></div>
-            <h4>Easy Returns</h4>
-            <p>30‑day guarantee</p>
-          </div>
-          <div class="policy-card">
-            <div class="policy-icon"><i class="fas fa-leaf"></i></div>
-            <h4>Cruelty‑Free</h4>
-            <p>Never tested on animals</p>
-          </div>
-          <div class="policy-card">
-            <div class="policy-icon"><i class="fas fa-lock"></i></div>
-            <h4>Secure Payment</h4>
-            <p>Encrypted transactions</p>
-          </div>
+        <div class="policy-card">
+          <div class="policy-icon"><i class="fas fa-truck"></i></div>
+          <h4 data-i18n="freeShippingTitle">Free Shipping</h4>
+          <p data-i18n="freeShippingDesc">On orders over 750 L.E</p>
+        </div>
+        <div class="policy-card">
+          <div class="policy-icon"><i class="fas fa-undo-alt"></i></div>
+          <h4 data-i18n="easyReturnsTitle">Easy Returns</h4>
+          <p data-i18n="easyReturnsDesc">30‑day guarantee</p>
+        </div>
+        <div class="policy-card">
+          <div class="policy-icon"><i class="fas fa-leaf"></i></div>
+          <h4 data-i18n="crueltyFreeTitle">Cruelty‑Free</h4>
+          <p data-i18n="crueltyFreeDesc">Never tested on animals</p>
+        </div>
+        <div class="policy-card">
+          <div class="policy-icon"><i class="fas fa-lock"></i></div>
+          <h4 data-i18n="securePaymentTitle">Secure Payment</h4>
+          <p data-i18n="securePaymentDesc">Encrypted transactions</p>
+        </div>
         </div>
       </div>
     </section>
@@ -220,7 +222,7 @@
     <div class="container footer-container">
       <div class="footer-col">
         <h5>kaibe</h5>
-        <p>Clean beauty for radiant skin & healthy hair.</p>
+        <p data-i18n="footerDesc">Clean beauty for radiant skin & healthy hair.</p>
         <div class="social-links">
           <a href="https://www.instagram.com/kaibe_daily?igsh=bnJuZ3VyZGloMWM1" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/share/1Km3HrW6yb/?mibextid=wwXIfr" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -228,7 +230,7 @@
         </div>
       </div>
       <div class="footer-col">
-        <h5>Quick Links</h5>
+        <h5 data-i18n="quickLinks">Quick Links</h5>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="products.html">Shop</a></li>
@@ -237,7 +239,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Policies</h5>
+        <h5 data-i18n="policies">Policies</h5>
         <ul>
           <li><a href="policies.html#shipping">Shipping</a></li>
           <li><a href="policies.html#returns">Returns</a></li>
@@ -246,8 +248,8 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Newsletter</h5>
-        <p>Subscribe for exclusive offers.</p>
+        <h5 data-i18n="newsletter">Newsletter</h5>
+        <p data-i18n="newsletterSub">Subscribe for exclusive offers.</p>
         <form class="newsletter-form" id="newsletterForm">
           <input type="email" placeholder="Your email" required>
           <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
