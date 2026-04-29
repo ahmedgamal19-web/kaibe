@@ -2386,3 +2386,7 @@ body {
 .goog-te-menu-frame {
   display: none !important;
 }
+
+#google_translate_element {
+  display: none !important;
+}
