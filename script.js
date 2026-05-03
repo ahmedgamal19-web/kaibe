@@ -50,7 +50,7 @@ const products = [
     desc: "Complete 7-Day Repair Routine: Shampoo + Hair Mask + Conditioner. The ultimate trio for damaged hair.",
     benefits: "The KAIBE 7-Day Repair Bundle is enriched with Argan Oil, Collagen, Keratin, and Pro-Vitamin B5 to deliver a complete hair transformation.\n• Repairs damaged hair and reduces breakage\n• Deeply nourishes and restores moisture\n• Strengthens hair and improves elasticity\n• Reduces frizz and enhances smoothness\n• Adds natural shine and softness\n• Protects hair from future damage\nWith consistent use, your hair becomes healthier, stronger, and visibly revitalized.",
     howToUse: "Step 1: Shampoo\nApply to wet hair, massage gently into scalp and hair, then rinse thoroughly.\nStep 2: Hair Mask\nApply to damp hair, focusing on mid-lengths to ends.\nLeave for 5–10 minutes (or up to 30 minutes for deep repair), then rinse well.\nUse 1–2 times per week.\nStep 3: Conditioner\nAfter shampoo or mask, apply to wet hair focusing on mid-lengths to ends.\nLeave for 2–3 minutes, then rinse thoroughly.\nFor best results, follow the full routine regularly.",
-    price: 944,
+    price: 949,
     oldPrice: 1049,
     category: "sets",
     badge: "⌛ Limited Time Offer",
