@@ -551,6 +551,16 @@ function initCartSidebar() {
         alert('Your cart is empty');
         return;
       }
+      if (typeof fbq !== 'undefined') {
+        const totalValue = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        fbq('track', 'InitiateCheckout', {
+          content_ids: cart.map(item => item.id),
+          content_type: 'product',
+          value: totalValue,
+          currency: 'EGP',
+          num_items: cart.reduce((sum, item) => sum + item.quantity, 0)
+        });
+      } 
       let message = "🛍️ *New Order from kaibe*%0A%0A";
       cart.forEach(item => {
         message += `• ${item.name} x${item.quantity} - ${item.price * item.quantity} L.E%0A`;
