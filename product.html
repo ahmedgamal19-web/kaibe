@@ -268,15 +268,6 @@
 
   <!-- ===== ربط ملف الجافاسكريبت ===== -->
   <script src="script.js"></script>
-  <script>
-  window.addEventListener("load", function() {
-    fbq('track', 'ViewContent', {
-      content_name: document.getElementById("detailName")?.innerText || "Product",
-      content_type: 'product',
-      value: parseFloat(document.getElementById("detailPrice")?.innerText.replace(/[^\d.]/g, '')) || 0,
-      currency: 'EGP'
-    });
-  });
-  </script>
+  
 </body>
 </html>
