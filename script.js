@@ -307,6 +307,14 @@ function handleAddToCart(e) {
   updateCartUI();
   saveCart();
   alert(`✨ ${product.name} added to cart!`);
+  // Facebook Pixel - AddToCart
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'AddToCart', {
+      content_name: product.name,
+      value: product.price,
+      currency: 'EGP'
+    });
+  }
 }
 
 // ==================== صفحة تفاصيل المنتج ====================
@@ -405,6 +413,17 @@ function initProductDetailPage() {
 
   // منتجات ذات صلة
   renderRelatedProducts(product);
+  // ================= Facebook Pixel (ViewContent) =================
+  setTimeout(() => {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'ViewContent', {
+        content_name: product.name,
+        content_type: 'product',
+        value: product.price,
+        currency: 'EGP'
+      });
+    }
+  }, 300);
 }
 
 function renderRelatedProducts(currentProduct) {
